@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Liquors {
-    private ArrayList<Liquor> liquorList = new ArrayList<Liquor>();
+public class liquors {
+    private ArrayList<liquor> liquorList = new ArrayList<liquor>();
 
 
     public void inputLiquor(Scanner scnr) {
