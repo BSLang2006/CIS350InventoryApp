@@ -25,8 +25,21 @@ class BarManager{
     System.out.println(Jack.brand + " is a " + Jack.type);
     System.out.println("It costs $" + Jack.price + ". Volume = " + Jack.volume);
     
+    liquor Smirnoff = new liquor("Vodka", "Smirnoff", 12.00, 40);
+    liquor Ciroc = new liquor("Vodka", "Ciroc", 12.00, 40);
+    liquor BombaySapphire = new liquor("Gin", "Bombay", 14.00, 24);
+    liquor Patron = new liquor("Tequila", "Patron", 15.00, 16);
+
+    ArrayList<liquor> liquorList = new ArrayList<liquor>();
+    liquorList.add(Smirnoff);
+    liquorList.add(Ciroc);
+    liquorList.add(BombaySapphire);
+    liquorList.add(Jack);
+    liquorList.add(Patron);
+
+    System.out.println(liquorList);
+
+
     }
-
-
 
 }
