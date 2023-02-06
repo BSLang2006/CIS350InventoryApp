@@ -42,7 +42,6 @@ class BarManager{
         // System.out.println(Smirnoff.getBrand());
 
         for (int i = 0; i < liquorList.size(); i++){
-            // System.out.println(liquorList(i).getBrand());
             System.out.println(liquorList.get(i).getBrand());
         }
     }
