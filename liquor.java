@@ -28,4 +28,28 @@ public class liquor {
     public String getBrand() {
         return brand;
     }
+
+    public void setType(String t) {
+        this.type = t;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
 }
