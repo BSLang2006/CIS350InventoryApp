@@ -21,16 +21,16 @@ public class liquor {
         volume = liqVol;
     }
 
-    public void setBrand(String b) {
-        this.brand = b;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getBrand() {
         return brand;
     }
 
-    public void setType(String t) {
-        this.type = t;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getType() {

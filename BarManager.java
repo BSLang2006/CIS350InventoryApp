@@ -39,6 +39,14 @@ class BarManager{
         liquorList.add(Patron);
         liquorList.add(Jack);
 
+        liquor testLiquor = new liquor(null, null, volume, volume);
+        testLiquor.setBrand("Brand");
+        testLiquor.setPrice(25.00);
+        testLiquor.setType("Gin");
+        testLiquor.setVolume(24);
+
+        liquorList.add(testLiquor);
+
         // System.out.println(Smirnoff.getBrand());
 
         for (int i = 0; i < liquorList.size(); i++){
