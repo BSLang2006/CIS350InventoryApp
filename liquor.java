@@ -14,6 +14,8 @@ public class liquor {
     double price;
     int volume;
 
+    // testing pushing from Intellij
+
     public liquor(String liqType, String liqBrand, double liqPrice, int liqVol) {
         type = liqType;
         brand = liqBrand;
