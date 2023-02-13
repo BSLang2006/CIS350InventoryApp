@@ -31,8 +31,7 @@ class BarManager{
         liquor Patron = new liquor("Tequila", "Patron", 15.00, 16);
         liquor Jack = new liquor("Whiskey", "Jack Daniels", 15.00, 40);
 
-
-        ArrayList<liquor> liquorList = new ArrayList<liquor>();
+        ArrayList<liquor> liquorList = new ArrayList<>();
         liquorList.add(Smirnoff);
         liquorList.add(Ciroc);
         liquorList.add(BombaySapphire);
@@ -47,10 +46,8 @@ class BarManager{
 
         liquorList.add(testLiquor);
 
-        // System.out.println(Smirnoff.getBrand());
-
-        for (int i = 0; i < liquorList.size(); i++){
-            System.out.println(liquorList.get(i).getBrand());
+        for (liquor liquor : liquorList) {
+            System.out.println(liquor.getBrand());
         }
     }
 
