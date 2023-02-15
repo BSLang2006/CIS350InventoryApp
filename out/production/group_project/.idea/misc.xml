@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="corretto-1.8" project-jdk-type="JavaSDK">
-=======
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="corretto-1.8" project-jdk-type="JavaSDK">
->>>>>>> 21670b9 (Fixing an issue where there was a conflict in the SDK used (was trying to use JDK 8 and JDK 19, for some reason))
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

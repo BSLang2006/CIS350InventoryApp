@@ -43,4 +43,9 @@ public class liquor {
     public int getVolume() {
         return volume;
     }
+
+    public String toString() {
+        return "Type: " + this.type + " Price: " + this.price + " Brand: "
+                + this.brand + " Volume: " + this.volume;
+    }
 }

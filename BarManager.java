@@ -6,24 +6,6 @@ class BarManager{
         System.out.println("Welcome to Bar Inventory Manager"); 
     
         int volume = 1;
-
-        // System.out.printf("Volume of the first bottle is: %d", volume);
-
-
-        // LiquorType();
-        //I don't remember Java that well. I am trying to remember what structures to use
-        //for each functionality. Do we use an array of strings for a list of liquor types or brands?
-        // I need to look at my old java programs, I remember using classes to manage other classes
-    
-        // liquor Jack = new liquor();
-
-        // Jack.type = "Whiskey";
-        // Jack.price = 10.00;
-        // Jack.brand = "Jack Daniels";
-        // Jack.volume = 40;
-
-        // System.out.println(Jack.brand + " is a " + Jack.type);
-        // System.out.println("It costs $" + Jack.price + ". Volume = " + Jack.volume);
     
         liquor Smirnoff = new liquor("Vodka", "Smirnoff", 12.00, 40);
         liquor Ciroc = new liquor("Vodka", "Ciroc", 12.00, 40);
@@ -49,6 +31,8 @@ class BarManager{
         for (liquor liquor : liquorList) {
             System.out.println(liquor.getBrand());
         }
-    }
 
+        System.out.println(testLiquor);
+        System.out.println(Jack);
+    }
 }
