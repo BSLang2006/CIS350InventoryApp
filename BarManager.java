@@ -22,7 +22,7 @@ class BarManager{
 
         liquor testLiquor = new liquor(null, null, volume, volume);
         testLiquor.setBrand("Brand");
-        testLiquor.setPrice(25.00);
+        testLiquor.setPrice(25.50);
         testLiquor.setType("Gin");
         testLiquor.setVolume(24);
 
