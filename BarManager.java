@@ -32,6 +32,7 @@ class BarManager{
             System.out.println(liquor.getBrand());
         }
 
+        // Testing toString method
         System.out.println(testLiquor);
         System.out.println(Jack);
     }
