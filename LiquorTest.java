@@ -29,18 +29,18 @@ public class LiquorTest {
         assertEquals("Type", test.getType());
     }
 
-//    @Test
-//    public void testGetPrice() {
-//        liquor test = new liquor("Gin", "Brand", 10.00, 40);
-//        assertEquals(10.00, test.getPrice(), 0.00001);
-//    }
-//
-//    @Test
-//    public void testSetPrice() {
-//        liquor test = new liquor("Gin", "Brand", 0, 40);
-//        test.setPrice(10.00);
-//        assertEquals(10.00, test.getPrice(), 0.00001);
-//    }
+    @Test
+    public void testGetPrice() {
+        liquor test = new liquor("Gin", "Brand", 10.00, 40);
+        assertEquals("$10.00", test.getPrice());
+    }
+
+    @Test
+    public void testSetPrice() {
+        liquor test = new liquor("Gin", "Brand", 0, 40);
+        test.setPrice(10.00);
+        assertEquals("$10.00", test.getPrice());
+    }
 
     @Test
     public void testGetVol() {
