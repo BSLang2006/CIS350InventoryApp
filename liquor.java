@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class liquor {
 
@@ -51,5 +52,11 @@ public class liquor {
     public String toString() {
         return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
                 + this.brand + ", Volume (oz): " + this.volume;
+    }
+
+    public static void printInventory(ArrayList<liquor> list) {
+        for (liquor liquor : list) {
+            System.out.println(liquor);
+        }
     }
 }

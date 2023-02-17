@@ -4,7 +4,7 @@ import java.util.*;
 class BarManager{
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
 
         System.out.println("Welcome to Bar Inventory Manager"); 
     
@@ -40,9 +40,7 @@ class BarManager{
 //        System.out.println(Jack);
 
         System.out.println("Current Inventory: ");
-        for (liquor liquor : liquorList) {
-            System.out.println(liquor);
-        }
+        liquor.printInventory(liquorList);
 
         String userInput;
         System.out.println("Would you like to add to inventory? (y/n)");
@@ -70,10 +68,7 @@ class BarManager{
         }
 
         // printing updated liquorList
-        for (liquor liquor : liquorList) {
-            System.out.println(liquor);
-        }
-
-
+        System.out.println("Updated Inventory:");
+        liquor.printInventory(liquorList);
     }
 }
