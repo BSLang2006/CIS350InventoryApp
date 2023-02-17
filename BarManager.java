@@ -69,6 +69,7 @@ class BarManager{
             }
         }
 
+        // printing updated liquorList
         for (liquor liquor : liquorList) {
             System.out.println(liquor);
         }
