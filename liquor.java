@@ -49,7 +49,7 @@ public class liquor {
     }
 
     public String toString() {
-        return "Type: " + this.type + " Price: " + dollar.format(this.price) + " Brand: "
-                + this.brand + " Volume (oz): " + this.volume;
+        return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
+                + this.brand + ", Volume (oz): " + this.volume;
     }
 }
