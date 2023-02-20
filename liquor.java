@@ -1,9 +1,14 @@
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
 public class liquor {
 
     String type; // whiskey, vodka, etc.
     String brand;
     double price;
     int volume;
+
+    DecimalFormat dollar = new DecimalFormat("$##.00");
 
     public liquor(String liqType, String liqBrand, double liqPrice, int liqVol) {
         type = liqType;
@@ -32,8 +37,8 @@ public class liquor {
         this.price = price;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        return dollar.format(price);
     }
 
     public void setVolume(int volume) {
@@ -45,7 +50,13 @@ public class liquor {
     }
 
     public String toString() {
-        return "Type: " + this.type + " Price: " + this.price + " Brand: "
-                + this.brand + " Volume: " + this.volume;
+        return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
+                + this.brand + ", Volume (oz): " + this.volume;
+    }
+
+    public static void printInventory(ArrayList<liquor> list) {
+        for (liquor liquor : list) {
+            System.out.println(liquor);
+        }
     }
 }
