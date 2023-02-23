@@ -3,14 +3,18 @@ import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.*;
-import java.util.*;
+
 
 public class HttpRequests {
 
-    private static final String POSTS_API_URL = "http://localhost:3000/categories";
+    //install Json-server with the command "npm install -g json-server"
+    //Navigate to the project containing db.json and type "json-server --watch db.json"
+    //By default it will serve the DB at http://localhost:3000
+    //To view the liquors database navigate to http://localhost:3000/liquors
 
-    String url ="Http://localhost:4200";
+    private static final String POSTS_API_URL = "http://localhost:3000/liquors";
+
+    
     public static void main(String[] args) throws IOException, InterruptedException 
     {
 
