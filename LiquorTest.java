@@ -9,6 +9,7 @@ public class LiquorTest {
         assertEquals("Brand", test.getBrand());
     }
 
+
     @Test
     public void testSetBrand() {
         liquor test = new liquor("Type", null, 10.00, 40);
