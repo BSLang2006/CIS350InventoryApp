@@ -14,7 +14,6 @@ public class HttpRequests {
 
     private static final String POSTS_API_URL = "http://localhost:3000/liquors";
 
-    
     public static void main(String[] args) throws IOException, InterruptedException 
     {
 
