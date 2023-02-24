@@ -53,7 +53,6 @@ public class liquor {
         return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
                 + this.brand + ", Volume (oz): " + this.volume;
     }
-
     public static void printInventory(ArrayList<liquor> list) {
         for (liquor liquor : list) {
             System.out.println(liquor);
