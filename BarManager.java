@@ -31,7 +31,6 @@ class BarManager{
 
         liquorList.add(testLiquor);
 
-
 //        for (liquor liquor : liquorList) {
 //            System.out.println(liquor.getBrand());
 //        }
@@ -70,6 +69,10 @@ class BarManager{
 
         // printing updated liquorList
         System.out.println("Updated Inventory:");
+        Liquor.printInventory(liquorList);
+
+        System.out.println("Testing sorting by brand");
+        liquorList.sort(new BrandSort());
         Liquor.printInventory(liquorList);
     }
 }
