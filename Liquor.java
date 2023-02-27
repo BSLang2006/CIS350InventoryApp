@@ -37,8 +37,16 @@ public class Liquor {
         this.price = price;
     }
 
+//    public String getPrice() {
+//        return dollar.format(price);
+//    }
+
     public String getPrice() {
         return dollar.format(price);
+    }
+
+    public double getPriceSimple() {
+        return price;
     }
 
     public void setVolume(int volume) {
