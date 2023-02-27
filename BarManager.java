@@ -31,6 +31,7 @@ class BarManager{
 
         liquorList.add(testLiquor);
 
+
 //        for (liquor liquor : liquorList) {
 //            System.out.println(liquor.getBrand());
 //        }
