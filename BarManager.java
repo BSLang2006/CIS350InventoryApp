@@ -70,5 +70,26 @@ class BarManager{
         // printing updated liquorList
         System.out.println("Updated Inventory:");
         Liquor.printInventory(liquorList);
+
+        System.out.println("----------------------------");
+        System.out.println("Testing sorting by brand");
+        liquorList.sort(new BrandSort());
+        Liquor.printInventory(liquorList);
+
+        System.out.println("----------------------------");
+        System.out.println("Testing sorting by type");
+        liquorList.sort(new TypeSort());
+        Liquor.printInventory(liquorList);
+
+        System.out.println("----------------------------");
+        System.out.println("Testing sorting by price");
+        liquorList.sort(new PriceSort());
+        Liquor.printInventory(liquorList);
+
+        System.out.println("----------------------------");
+        System.out.println("Testing sorting by volume");
+        liquorList.sort(new VolSort());
+        Liquor.printInventory(liquorList);
+
     }
 }
