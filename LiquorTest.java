@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 
 public class LiquorTest {
 
-    // testing the rebase
     @Test
     public void testGetBrand() {
         Liquor test = new Liquor("Gin", "Brand", 10.00, 40);
