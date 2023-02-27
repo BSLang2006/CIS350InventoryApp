@@ -31,14 +31,6 @@ class BarManager{
 
         liquorList.add(testLiquor);
 
-//        for (liquor liquor : liquorList) {
-//            System.out.println(liquor.getBrand());
-//        }
-
-        // Testing toString method
-//        System.out.println(testLiquor);
-//        System.out.println(Jack);
-
         System.out.println("Current Inventory: ");
         Liquor.printInventory(liquorList);
 
