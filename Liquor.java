@@ -37,10 +37,6 @@ public class Liquor {
         this.price = price;
     }
 
-//    public String getPrice() {
-//        return dollar.format(price);
-//    }
-
     public String getPrice() {
         return dollar.format(price);
     }
