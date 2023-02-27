@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class liquor {
+public class Liquor {
 
     String type; // whiskey, vodka, etc.
     String brand;
@@ -10,7 +10,7 @@ public class liquor {
 
     DecimalFormat dollar = new DecimalFormat("$##.00");
 
-    public liquor(String liqType, String liqBrand, double liqPrice, int liqVol) {
+    public Liquor(String liqType, String liqBrand, double liqPrice, int liqVol) {
         type = liqType;
         brand = liqBrand;
         price = liqPrice;
@@ -53,8 +53,8 @@ public class liquor {
         return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
                 + this.brand + ", Volume (oz): " + this.volume;
     }
-    public static void printInventory(ArrayList<liquor> list) {
-        for (liquor liquor : list) {
+    public static void printInventory(ArrayList<Liquor> list) {
+        for (Liquor liquor : list) {
             System.out.println(liquor);
         }
     }
