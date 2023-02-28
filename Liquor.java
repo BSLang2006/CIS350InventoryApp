@@ -8,7 +8,7 @@ public class Liquor {
     double price;
     int volume;
 
-    DecimalFormat dollar = new DecimalFormat("$##.00");
+    static DecimalFormat dollar = new DecimalFormat("$##.00");
 
     public Liquor(String liqType, String liqBrand, double liqPrice, int liqVol) {
         type = liqType;
@@ -77,5 +77,13 @@ public class Liquor {
                 System.out.println(liquor);
             }
         }
+    }
+
+    public static String totalPrice(ArrayList<Liquor> list) {
+        double price = 0.0;
+        for (Liquor liquor : list) {
+            price = price + liquor.getPriceSimple();
+        }
+        return dollar.format(price);
     }
 }

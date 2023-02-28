@@ -90,5 +90,9 @@ class BarManager{
         System.out.println("----------------------------");
         System.out.println("Returning only a brand");
         Liquor.findBrand(liquorList, "Jack Daniels");
+
+        System.out.println("----------------------------");
+        System.out.println("Total Price");
+        System.out.println(Liquor.totalPrice(liquorList));
     }
 }
