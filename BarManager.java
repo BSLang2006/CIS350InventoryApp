@@ -83,5 +83,12 @@ class BarManager{
         liquorList.sort(new VolSort());
         Liquor.printInventory(liquorList);
 
+        System.out.println("----------------------------");
+        System.out.println("Returning only a type");
+        Liquor.findType(liquorList, "Whiskey");
+
+        System.out.println("----------------------------");
+        System.out.println("Returning only a brand");
+        Liquor.findBrand(liquorList, "Jack Daniels");
     }
 }

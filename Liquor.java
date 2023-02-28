@@ -62,4 +62,20 @@ public class Liquor {
             System.out.println(liquor);
         }
     }
+
+    public static void findType (ArrayList<Liquor> list, String s) {
+        for (Liquor liquor : list) {
+            if (liquor.getType().equalsIgnoreCase(s)) {
+                System.out.println(liquor);
+            }
+        }
+    }
+
+    public static void findBrand (ArrayList<Liquor> list, String s) {
+        for (Liquor liquor : list) {
+            if (liquor.getBrand().equalsIgnoreCase(s)) {
+                System.out.println(liquor);
+            }
+        }
+    }
 }
