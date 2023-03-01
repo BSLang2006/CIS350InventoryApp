@@ -5,7 +5,6 @@ class BarManager{
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
-
         System.out.println("Welcome to Bar Inventory Manager"); 
     
         int volume = 1;
