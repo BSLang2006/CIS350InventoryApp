@@ -1,4 +1,7 @@
 import org.junit.*;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class LiquorTest {
@@ -54,5 +57,42 @@ public class LiquorTest {
         Liquor test = new Liquor("Gin", "Brand", 10.00, 0);
         test.setVolume(24);
         assertEquals(24, test.getVolume());
+    }
+
+    @Test
+    public void testFindBrand() {
+        ArrayList<Liquor> list = new ArrayList<>();
+
+        Liquor t1 = new Liquor("Gin", "Hendricks", 15.00, 24);
+        Liquor t2 = new Liquor("Whiskey", "Jameson", 15.00, 24);
+        Liquor t3 = new Liquor("Vodka", "Smirnoff", 15.00, 24);
+
+        list.add(t1);
+        list.add(t2);
+        list.add(t3);
+
+        ArrayList<Liquor> list2 = new ArrayList<>();
+        list2.add(Liquor.findBrand(list, "Jameson"));
+
+        System.out.println("Test");
+        Liquor.printInventory(list2);
+
+        assertEquals("Jameson", list2.get(0).getBrand());
+    }
+
+    @Test
+    public void testTotalPrice() {
+
+        ArrayList<Liquor> list = new ArrayList<>();
+
+        Liquor t1 = new Liquor("Gin", "Hendricks", 15.00, 24);
+        Liquor t2 = new Liquor("Whiskey", "Jameson", 15.00, 24);
+        Liquor t3 = new Liquor("Vodka", "Smirnoff", 15.00, 24);
+
+        list.add(t1);
+        list.add(t2);
+        list.add(t3);
+
+        assertEquals("$45.00", Liquor.totalPrice(list));
     }
 }

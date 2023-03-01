@@ -71,12 +71,14 @@ public class Liquor {
         }
     }
 
-    public static void findBrand (ArrayList<Liquor> list, String s) {
+    public static Liquor findBrand (ArrayList<Liquor> list, String s) {
         for (Liquor liquor : list) {
             if (liquor.getBrand().equalsIgnoreCase(s)) {
                 System.out.println(liquor);
+                return liquor;
             }
         }
+        return null;
     }
 
     public static String totalPrice(ArrayList<Liquor> list) {
