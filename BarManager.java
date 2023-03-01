@@ -93,5 +93,13 @@ class BarManager{
         System.out.println("----------------------------");
         System.out.println("Total Price");
         System.out.println(Liquor.totalPrice(liquorList));
+
+        Beer beer = new Beer("Beer", "Bud Light", 2, 12);
+        liquorList.add(beer);
+        Beer.printInventory(liquorList);
+
+        NonAlcohol coke = new NonAlcohol("Soda", "Coca Cola", 2, 12);
+        liquorList.add(coke);
+        Liquor.printInventory(liquorList);
     }
 }
