@@ -63,12 +63,14 @@ public class Liquor {
         }
     }
 
-    public static void findType (ArrayList<Liquor> list, String s) {
+    public static Liquor findType (ArrayList<Liquor> list, String s) {
         for (Liquor liquor : list) {
             if (liquor.getType().equalsIgnoreCase(s)) {
                 System.out.println(liquor);
+                return liquor;
             }
         }
+        return null;
     }
 
     public static Liquor findBrand (ArrayList<Liquor> list, String s) {

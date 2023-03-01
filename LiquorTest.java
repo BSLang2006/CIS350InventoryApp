@@ -78,6 +78,24 @@ public class LiquorTest {
     }
 
     @Test
+    public void testFindType() {
+        ArrayList<Liquor> list = new ArrayList<>();
+
+        Liquor t1 = new Liquor("Gin", "Hendricks", 15.00, 24);
+        Liquor t2 = new Liquor("Whiskey", "Jameson", 15.00, 24);
+        Liquor t3 = new Liquor("Vodka", "Smirnoff", 15.00, 24);
+
+        list.add(t1);
+        list.add(t2);
+        list.add(t3);
+
+        ArrayList<Liquor> list2 = new ArrayList<>();
+        list2.add(Liquor.findType(list, "Gin"));
+
+        assertEquals("Gin", list2.get(0).getType());
+    }
+
+    @Test
     public void testTotalPrice() {
 
         ArrayList<Liquor> list = new ArrayList<>();
