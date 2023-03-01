@@ -1,5 +1,6 @@
-public class Beer extends Liquor {
-    public Beer(String liqType, String liqBrand, double liqPrice, int liqVol) {
-        super(liqType, liqBrand, liqPrice, liqVol);
+public class Beer extends Drinks {
+
+    public Beer(String drinkType, String drinkBrand, double drinkPrice, int drinkVol) {
+        super(drinkType, drinkBrand, drinkPrice, drinkVol);
     }
 }
