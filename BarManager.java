@@ -85,7 +85,7 @@ class BarManager{
 
         System.out.println("----------------------------");
         System.out.println("Returning only a type");
-        Liquor.findType(liquorList, "Whiskey");
+        Liquor.findType(liquorList, "Vodka");
 
         System.out.println("----------------------------");
         System.out.println("Returning only a brand");
