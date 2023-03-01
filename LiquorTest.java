@@ -74,9 +74,6 @@ public class LiquorTest {
         ArrayList<Liquor> list2 = new ArrayList<>();
         list2.add(Liquor.findBrand(list, "Jameson"));
 
-        System.out.println("Test");
-        Liquor.printInventory(list2);
-
         assertEquals("Jameson", list2.get(0).getBrand());
     }
 
