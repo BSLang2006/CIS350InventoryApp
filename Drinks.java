@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Liquor {
+public class Drinks {
 
     String type; // whiskey, vodka, etc.
     String brand;
@@ -10,11 +10,11 @@ public class Liquor {
 
     static DecimalFormat dollar = new DecimalFormat("$##.00");
 
-    public Liquor(String liqType, String liqBrand, double liqPrice, int liqVol) {
-        type = liqType;
-        brand = liqBrand;
-        price = liqPrice;
-        volume = liqVol;
+    public Drinks(String drinkType, String drinkBrand, double drinkPrice, int drinkVol) {
+        type = drinkType;
+        brand = drinkBrand;
+        price = drinkPrice;
+        volume = drinkVol;
     }
 
     public void setBrand(String brand) {
@@ -57,9 +57,9 @@ public class Liquor {
         return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
                 + this.brand + ", Volume (oz): " + this.volume;
     }
-    public static void printInventory(ArrayList<Liquor> list) {
-        for (Liquor liquor : list) {
-            System.out.println(liquor);
+    public static void printInventory(ArrayList<Drinks> list) {
+        for (Drinks drinks : list) {
+            System.out.println(drinks);
         }
     }
 
@@ -74,10 +74,10 @@ public class Liquor {
 //        return filteredList;
 //    }
 
-    public static void findType (ArrayList<Liquor> list, String s) {
-        for (Liquor liquor : list) {
-            if (liquor.getType().equalsIgnoreCase(s)) {
-                System.out.println(liquor);
+    public static void findType (ArrayList<Drinks> list, String s) {
+        for (Drinks drinks : list) {
+            if (drinks.getType().equalsIgnoreCase(s)) {
+                System.out.println(drinks);
             }
         }
     }
@@ -92,17 +92,17 @@ public class Liquor {
 //        return null;
 //    }
 
-    public static void findBrand (ArrayList<Liquor> list, String s) {
-        for (Liquor liquor : list) {
-            if (liquor.getBrand().equalsIgnoreCase(s)) {
-                System.out.println(liquor);
+    public static void findBrand (ArrayList<Drinks> list, String s) {
+        for (Drinks drinks : list) {
+            if (drinks.getBrand().equalsIgnoreCase(s)) {
+                System.out.println(drinks);
             }
         }
     }
-    public static String totalPrice(ArrayList<Liquor> list) {
+    public static String totalPrice(ArrayList<Drinks> list) {
         double price = 0.0;
-        for (Liquor liquor : list) {
-            price = price + liquor.getPriceSimple();
+        for (Drinks drinks : list) {
+            price = price + drinks.getPriceSimple();
         }
         return dollar.format(price);
     }
