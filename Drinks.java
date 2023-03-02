@@ -106,4 +106,22 @@ public class Drinks {
         }
         return dollar.format(price);
     }
+
+    public static void removeDrink(String brand, String type, ArrayList<Drinks> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getBrand().equalsIgnoreCase(brand)
+            && list.get(i).getType().equalsIgnoreCase(type)) {
+                list.remove(i);
+            }
+        }
+    }
+
+    public static void removeEmpty(ArrayList<Drinks> list) {
+        int i;
+        for (i = 0; i < list.size(); i++) {
+            if (list.get(i).getVolume() == 0) {
+                list.remove(i);
+            }
+        }
+    }
 }
