@@ -8,8 +8,6 @@ class BarManager {
         Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
         System.out.println("Welcome to Bar Inventory Manager");
 
-        int volume = 1;
-
         Drinks smirnoff = new Drinks("Vodka", "Smirnoff", 12.00, 40);
         Drinks ciroc = new Drinks("Vodka", "Ciroc", 12.00, 40);
         Drinks bombaySapphire = new Drinks("Gin", "Bombay", 14.00, 24);
@@ -23,7 +21,7 @@ class BarManager {
         drinksList.add(patron);
         drinksList.add(jack);
 
-        Drinks testDrinks = new Drinks(null, null, volume, volume);
+        Drinks testDrinks = new Drinks(null, null, 0, 0);
         testDrinks.setBrand("Brand");
         testDrinks.setPrice(25.50);
         testDrinks.setType("Gin");
