@@ -1,28 +1,27 @@
 // Your First Program\
-import java.util.*;
+import java.util.Scanner;
+import java.util.ArrayList;
 
-class BarManager{
+class BarManager {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
-        System.out.println("Welcome to Bar Inventory Manager"); 
-    
-        int volume = 1;
-    
-        Drinks Smirnoff = new Drinks("Vodka", "Smirnoff", 12.00, 40);
-        Drinks Ciroc = new Drinks("Vodka", "Ciroc", 12.00, 40);
-        Drinks BombaySapphire = new Drinks("Gin", "Bombay", 14.00, 24);
-        Drinks Patron = new Drinks("Tequila", "Patron", 15.00, 16);
-        Drinks Jack = new Drinks("Whiskey", "Jack Daniels", 15.00, 40);
+        System.out.println("Welcome to Bar Inventory Manager");
+
+        Drinks smirnoff = new Drinks("Vodka", "Smirnoff", 12.00, 40);
+        Drinks ciroc = new Drinks("Vodka", "Ciroc", 12.00, 40);
+        Drinks bombaySapphire = new Drinks("Gin", "Bombay", 14.00, 24);
+        Drinks patron = new Drinks("Tequila", "Patron", 15.00, 16);
+        Drinks jack = new Drinks("Whiskey", "Jack Daniels", 15.00, 40);
 
         ArrayList<Drinks> drinksList = new ArrayList<>();
-        drinksList.add(Smirnoff);
-        drinksList.add(Ciroc);
-        drinksList.add(BombaySapphire);
-        drinksList.add(Patron);
-        drinksList.add(Jack);
+        drinksList.add(smirnoff);
+        drinksList.add(ciroc);
+        drinksList.add(bombaySapphire);
+        drinksList.add(patron);
+        drinksList.add(jack);
 
-        Drinks testDrinks = new Drinks(null, null, volume, volume);
+        Drinks testDrinks = new Drinks(null, null, 0, 0);
         testDrinks.setBrand("Brand");
         testDrinks.setPrice(25.50);
         testDrinks.setType("Gin");
@@ -94,12 +93,30 @@ class BarManager{
         System.out.println("Total Price");
         System.out.println(Drinks.totalPrice(drinksList));
 
+        System.out.println("-----------------------------");
+        System.out.println("Adding beer");
         Beer beer = new Beer("Beer", "Bud Light", 2, 12);
         drinksList.add(beer);
         Beer.printInventory(drinksList);
 
+        System.out.println("-----------------------------");
+        System.out.println("Adding soda");
         NonAlcohol coke = new NonAlcohol("Soda", "Coca Cola", 2, 12);
         drinksList.add(coke);
+        Drinks.printInventory(drinksList);
+
+        System.out.println("-----------------------------");
+        System.out.println("Removing a drink (ciroc)");
+        Drinks.removeDrink("Ciroc", "Vodka", drinksList);
+        Drinks.printInventory(drinksList);
+
+        System.out.println("-----------------------------");
+        System.out.println("Emptying a drink");
+        smirnoff.setVolume(0);
+        Drinks.printInventory(drinksList);
+        System.out.println("BEFORE");
+        Drinks.removeEmpty(drinksList);
+        System.out.println("AFTER");
         Drinks.printInventory(drinksList);
     }
 }
