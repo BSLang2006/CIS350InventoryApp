@@ -101,5 +101,11 @@ class BarManager{
         NonAlcohol coke = new NonAlcohol("Soda", "Coca Cola", 2, 12);
         drinksList.add(coke);
         Drinks.printInventory(drinksList);
+
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Gui();
+            }
+        });
     }
 }
