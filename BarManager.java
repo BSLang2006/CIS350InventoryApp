@@ -30,6 +30,8 @@ class BarManager{
 
         drinksList.add(testDrinks);
 
+
+
         System.out.println("Current Inventory: ");
         Drinks.printInventory(drinksList);
 
