@@ -142,7 +142,7 @@ public class Gui {
 //            gui.getContentPane().add(beerPanel);
 //            gui.getContentPane().add(nonAlcoholPanel);
 //
-//            new Gui();
+            new Gui();
 
         }
 
