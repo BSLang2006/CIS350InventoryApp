@@ -41,12 +41,6 @@ public class Gui {
                 gui.add(panel);
                 gui.setVisible(true);
         }
-
-
-
-
-
-
         public static void main (String[] args) {
 //            Border border = new LineBorder(Color.BLACK, 4, true);
 //
