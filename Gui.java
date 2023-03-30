@@ -1,16 +1,28 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import java.awt.GridBagLayout;
 
 public class Gui {
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        JButton button = new JButton("Add");
+        JButton button2 = new JButton("Remove");
+
 
         public Gui() {
                 JFrame gui = new JFrame("Bar Inventory");
                 JPanel panel = new JPanel();
                 gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+                panel.setLayout(new GridBagLayout());
+                //gbc.insets = new Insets(10,5,10,5);
+
 
                 String[] colNames = {"Brand", "Type", "Price", "Vol"};
 
@@ -35,11 +47,46 @@ public class Gui {
                 }
                 JTable table = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(table);
+
                 panel.add(scrollPane);
 
-                gui.setSize(640,480);
+                        button.addActionListener(new ActionListener() {
+                                public void actionPerformed(ActionEvent e) {
+                                        JOptionPane.showInputDialog("What would you like to add");
+                                }
+                                });
+                //JButton button = new JButton("Add");
+                gbc.ipadx = 10;
+                gbc.ipady = 2;
+                gbc.gridx = 1;
+                gbc.gridy = 0;
+                gbc.gridheight = 5;
+                //gbc.gridwidth = 5;
+                //gbc.fill = GridBagConstraints.VERTICAL;
+                panel.add(button, gbc);
+
+
+                button2.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                                JOptionPane.showInputDialog("What would you like to remove");
+                        }
+                });
+                gbc.gridx = 2;
+                gbc.gridy = 0;
+                panel.add(button2, gbc);
+
+                String[] sortOptions = {"brand", "type", "volume", "Price", "None"};
+                JComboBox<String> sortList = new JComboBox<String>(sortOptions);
+                gbc.gridx = 1;
+                gbc.gridy = 1;
+                panel.add(sortList, gbc);
+
+
+                gui.setSize(700,600);
                 gui.add(panel);
                 gui.setVisible(true);
+
+
         }
 
         public static void main (String[] args) {
