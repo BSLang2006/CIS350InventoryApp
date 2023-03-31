@@ -56,6 +56,9 @@ public class Gui {
                 drinksList.add(Patron);
                 drinksList.add(Jack);
 
+                // testing adding a drink
+                Drinks testDrink = new Drinks(null, null, 0, 0);
+
                 DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
 
                 for (Drinks drinks : drinksList) {
@@ -71,6 +74,12 @@ public class Gui {
                                 public void actionPerformed(ActionEvent e) {
                                         JOptionPane.showMessageDialog(null, addPanel,
                                                 "Enter Values", JOptionPane.INFORMATION_MESSAGE);
+                                        testDrink.setBrand(brandField.getText());
+                                        testDrink.setType(typeField.getText());
+                                        testDrink.setPrice(Double.parseDouble(priceField.getText()));
+                                        testDrink.setVolume(Integer.parseInt(volField.getText()));
+                                        drinksList.add(testDrink);
+                                        System.out.println(drinksList);
                                 }
                                 });
                 //JButton button = new JButton("Add");
