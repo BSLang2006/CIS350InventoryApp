@@ -81,6 +81,9 @@ public class Gui {
                 gbc.gridy = 1;
                 panel.add(sortList, gbc);
 
+                //Sort by column
+                table.setAutoCreateRowSorter(true);
+
 
                 gui.setSize(700,600);
                 gui.add(panel);
