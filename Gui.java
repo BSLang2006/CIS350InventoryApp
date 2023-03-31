@@ -10,97 +10,97 @@ import java.awt.GridBagLayout;
 
 public class Gui {
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        JButton button = new JButton("Add");
-        JButton button2 = new JButton("Remove");
+    GridBagConstraints gbc = new GridBagConstraints();
+    JButton button = new JButton("Add");
+    JButton button2 = new JButton("Remove");
 
-        public Gui() {
-                JFrame gui = new JFrame("Bar Inventory");
-                JPanel panel = new JPanel();
-                gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    public Gui() {
+        JFrame gui = new JFrame("Bar Inventory");
+        JPanel panel = new JPanel();
+        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-                panel.setLayout(new GridBagLayout());
-                //gbc.insets = new Insets(10,5,10,5);
+        panel.setLayout(new GridBagLayout());
+        //gbc.insets = new Insets(10,5,10,5);
 
-                // for add button
-                JLabel brandLabel = new JLabel("Brand");
-                JLabel typeLabel = new JLabel("Type");
-                JLabel priceLabel = new JLabel("Price");
-                JLabel volLabel = new JLabel("Volume");
-                JTextField brandField = new JTextField(10);
-                JTextField typeField = new JTextField(10);
-                JTextField priceField = new JTextField(10);
-                JTextField volField = new JTextField(10);
-                JPanel addPanel = new JPanel();
-                addPanel.add(brandLabel);
-                addPanel.add(brandField);
-                addPanel.add(typeLabel);
-                addPanel.add(typeField);
-                addPanel.add(priceLabel);
-                addPanel.add(priceField);
-                addPanel.add(volLabel);
-                addPanel.add(volField);
+        // for add button
+        JLabel brandLabel = new JLabel("Brand");
+        JLabel typeLabel = new JLabel("Type");
+        JLabel priceLabel = new JLabel("Price");
+        JLabel volLabel = new JLabel("Volume");
+        JTextField brandField = new JTextField(10);
+        JTextField typeField = new JTextField(10);
+        JTextField priceField = new JTextField(10);
+        JTextField volField = new JTextField(10);
+        JPanel addPanel = new JPanel();
+        addPanel.add(brandLabel);
+        addPanel.add(brandField);
+        addPanel.add(typeLabel);
+        addPanel.add(typeField);
+        addPanel.add(priceLabel);
+        addPanel.add(priceField);
+        addPanel.add(volLabel);
+        addPanel.add(volField);
 
-                String[] colNames = {"Brand", "Type", "Price", "Vol"};
+        String[] colNames = {"Brand", "Type", "Price", "Vol"};
 
-                Drinks Smirnoff = new Drinks("Vodka", "Smirnoff", 12.00, 40);
-                Drinks Ciroc = new Drinks("Vodka", "Ciroc", 12.00, 40);
-                Drinks BombaySapphire = new Drinks("Gin", "Bombay", 14.00, 24);
-                Drinks Patron = new Drinks("Tequila", "Patron", 15.00, 16);
-                Drinks Jack = new Drinks("Whiskey", "Jack Daniels", 15.00, 40);
+        Drinks Smirnoff = new Drinks("Vodka", "Smirnoff", 12.00, 40);
+        Drinks Ciroc = new Drinks("Vodka", "Ciroc", 12.00, 40);
+        Drinks BombaySapphire = new Drinks("Gin", "Bombay", 14.00, 24);
+        Drinks Patron = new Drinks("Tequila", "Patron", 15.00, 16);
+        Drinks Jack = new Drinks("Whiskey", "Jack Daniels", 15.00, 40);
 
-                ArrayList<Drinks> drinksList = new ArrayList<>();
-                drinksList.add(Smirnoff);
-                drinksList.add(Ciroc);
-                drinksList.add(BombaySapphire);
-                drinksList.add(Patron);
-                drinksList.add(Jack);
+        ArrayList<Drinks> drinksList = new ArrayList<>();
+        drinksList.add(Smirnoff);
+        drinksList.add(Ciroc);
+        drinksList.add(BombaySapphire);
+        drinksList.add(Patron);
+        drinksList.add(Jack);
 
-                // testing adding a drink
-                Drinks testDrink = new Drinks(null, null, 0, 0);
+        // testing adding a drink
+        Drinks testDrink = new Drinks(null, null, 0, 0);
 
-                DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
 
-                for (Drinks drinks : drinksList) {
-                        tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-                                String.valueOf(drinks.getVolume())});
-                }
-                JTable table = new JTable(tableModel);
-                JScrollPane scrollPane = new JScrollPane(table);
+        for (Drinks drinks : drinksList) {
+            tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                    String.valueOf(drinks.getVolume())});
+        }
+        JTable table = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(table);
 
-                panel.add(scrollPane);
+        panel.add(scrollPane);
 
-                        button.addActionListener(new ActionListener() {
-                                public void actionPerformed(ActionEvent e) {
-                                        JOptionPane.showMessageDialog(null, addPanel,
-                                                "Enter Values", JOptionPane.INFORMATION_MESSAGE);
-                                        testDrink.setBrand(brandField.getText());
-                                        testDrink.setType(typeField.getText());
-                                        testDrink.setPrice(Double.parseDouble(priceField.getText()));
-                                        testDrink.setVolume(Integer.parseInt(volField.getText()));
-                                        drinksList.add(testDrink);
-                                        System.out.println(drinksList);
-                                }
-                                });
-                //JButton button = new JButton("Add");
-                gbc.ipadx = 10;
-                gbc.ipady = 2;
-                gbc.gridx = 1;
-                gbc.gridy = 0;
-                gbc.gridheight = 5;
-                //gbc.gridwidth = 5;
-                //gbc.fill = GridBagConstraints.VERTICAL;
-                panel.add(button, gbc);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, addPanel,
+                        "Enter Values", JOptionPane.INFORMATION_MESSAGE);
+                testDrink.setBrand(brandField.getText());
+                testDrink.setType(typeField.getText());
+                testDrink.setPrice(Double.parseDouble(priceField.getText()));
+                testDrink.setVolume(Integer.parseInt(volField.getText()));
+                drinksList.add(testDrink);
+                System.out.println(drinksList);
+            }
+        });
+        //JButton button = new JButton("Add");
+        gbc.ipadx = 10;
+        gbc.ipady = 2;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridheight = 5;
+        //gbc.gridwidth = 5;
+        //gbc.fill = GridBagConstraints.VERTICAL;
+        panel.add(button, gbc);
 
 
-                button2.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                                JOptionPane.showInputDialog("What would you like to remove");
-                        }
-                });
-                gbc.gridx = 2;
-                gbc.gridy = 0;
-                panel.add(button2, gbc);
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showInputDialog("What would you like to remove");
+            }
+        });
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        panel.add(button2, gbc);
 
 //                String[] sortOptions = {"brand", "type", "volume", "Price", "None"};
 //                JComboBox<String> sortList = new JComboBox<String>(sortOptions);
@@ -108,18 +108,18 @@ public class Gui {
 //                gbc.gridy = 1;
 //                panel.add(sortList, gbc);
 
-                //Sort by column
-                table.setAutoCreateRowSorter(true);
+        //Sort by column
+        table.setAutoCreateRowSorter(true);
 
 
-                gui.setSize(700,600);
-                gui.add(panel);
-                gui.setVisible(true);
+        gui.setSize(700, 600);
+        gui.add(panel);
+        gui.setVisible(true);
 
 
-        }
+    }
 
-        public static void main (String[] args) {
+    public static void main(String[] args) {
 //            Border border = new LineBorder(Color.BLACK, 4, true);
 //
 //            //creates the frame for the GUI
@@ -219,8 +219,8 @@ public class Gui {
 //            gui.getContentPane().add(beerPanel);
 //            gui.getContentPane().add(nonAlcoholPanel);
 //
-            new Gui();
+        new Gui();
 
-        }
+    }
 
 }
