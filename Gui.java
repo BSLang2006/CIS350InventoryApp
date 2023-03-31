@@ -14,7 +14,6 @@ public class Gui {
         JButton button = new JButton("Add");
         JButton button2 = new JButton("Remove");
 
-
         public Gui() {
                 JFrame gui = new JFrame("Bar Inventory");
                 JPanel panel = new JPanel();
@@ -23,6 +22,24 @@ public class Gui {
                 panel.setLayout(new GridBagLayout());
                 //gbc.insets = new Insets(10,5,10,5);
 
+                // for add button
+                JLabel brandLabel = new JLabel("Brand");
+                JLabel typeLabel = new JLabel("Type");
+                JLabel priceLabel = new JLabel("Price");
+                JLabel volLabel = new JLabel("Volume");
+                JTextField brandField = new JTextField(10);
+                JTextField typeField = new JTextField(10);
+                JTextField priceField = new JTextField(10);
+                JTextField volField = new JTextField(10);
+                JPanel addPanel = new JPanel();
+                addPanel.add(brandLabel);
+                addPanel.add(brandField);
+                addPanel.add(typeLabel);
+                addPanel.add(typeField);
+                addPanel.add(priceLabel);
+                addPanel.add(priceField);
+                addPanel.add(volLabel);
+                addPanel.add(volField);
 
                 String[] colNames = {"Brand", "Type", "Price", "Vol"};
 
@@ -52,7 +69,8 @@ public class Gui {
 
                         button.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent e) {
-                                        JOptionPane.showInputDialog("What would you like to add");
+                                        JOptionPane.showMessageDialog(null, addPanel,
+                                                "Enter Values", JOptionPane.INFORMATION_MESSAGE);
                                 }
                                 });
                 //JButton button = new JButton("Add");
