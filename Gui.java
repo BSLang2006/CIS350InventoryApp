@@ -75,11 +75,11 @@ public class Gui {
                 gbc.gridy = 0;
                 panel.add(button2, gbc);
 
-                String[] sortOptions = {"brand", "type", "volume", "Price", "None"};
-                JComboBox<String> sortList = new JComboBox<String>(sortOptions);
-                gbc.gridx = 1;
-                gbc.gridy = 1;
-                panel.add(sortList, gbc);
+//                String[] sortOptions = {"brand", "type", "volume", "Price", "None"};
+//                JComboBox<String> sortList = new JComboBox<String>(sortOptions);
+//                gbc.gridx = 1;
+//                gbc.gridy = 1;
+//                panel.add(sortList, gbc);
 
                 //Sort by column
                 table.setAutoCreateRowSorter(true);
