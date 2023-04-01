@@ -92,10 +92,16 @@ public class Gui {
         //gbc.fill = GridBagConstraints.VERTICAL;
         panel.add(button, gbc);
 
+                //Select a row
+                table.setRowSelectionAllowed(true);
+
+
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showInputDialog("What would you like to remove");
+
+                tableModel.removeRow(table.getSelectedRow());
+                JOptionPane.showMessageDialog(null,"Deleted Row");
             }
         });
         gbc.gridx = 2;
