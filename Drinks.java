@@ -54,8 +54,8 @@ public class Drinks {
     }
 
     public String toString() {
-        return "Type: " + this.type + ", Price: " + dollar.format(this.price) + ", Brand: "
-                + this.brand + ", Volume (oz): " + this.volume;
+        return "Brand: " + this.getBrand() + ", Type: " + this.type + ", Price: " + dollar.format(this.price) +
+                ", Volume (oz): " + this.volume;
     }
     public static void printInventory(ArrayList<Drinks> list) {
         for (Drinks drinks : list) {
