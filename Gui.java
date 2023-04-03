@@ -72,6 +72,7 @@ public class Gui {
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                tableModel.setRowCount(0);
                 JOptionPane.showMessageDialog(null, addPanel,
                         "Enter Values", JOptionPane.INFORMATION_MESSAGE);
                 testDrink.setBrand(brandField.getText());
@@ -79,6 +80,10 @@ public class Gui {
                 testDrink.setPrice(Double.parseDouble(priceField.getText()));
                 testDrink.setVolume(Integer.parseInt(volField.getText()));
                 drinksList.add(testDrink);
+                for (Drinks drinks : drinksList) {
+                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                            String.valueOf(drinks.getVolume())});
+                }
                 System.out.println(drinksList);
             }
         });
@@ -92,8 +97,8 @@ public class Gui {
         //gbc.fill = GridBagConstraints.VERTICAL;
         panel.add(button, gbc);
 
-                //Select a row
-                table.setRowSelectionAllowed(true);
+        //Select a row
+        table.setRowSelectionAllowed(true);
 
 
 
@@ -102,6 +107,7 @@ public class Gui {
 
                 tableModel.removeRow(table.getSelectedRow());
                 JOptionPane.showMessageDialog(null,"Deleted Row");
+                System.out.println(drinksList);
             }
         });
         gbc.gridx = 2;
