@@ -72,7 +72,7 @@ public class Gui {
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                tableModel.setRowCount(0);
+
                 JOptionPane.showMessageDialog(null, addPanel,
                         "Enter Values", JOptionPane.INFORMATION_MESSAGE);
                 testDrink.setBrand(brandField.getText());
@@ -80,6 +80,7 @@ public class Gui {
                 testDrink.setPrice(Double.parseDouble(priceField.getText()));
                 testDrink.setVolume(Integer.parseInt(volField.getText()));
                 drinksList.add(testDrink);
+                tableModel.setRowCount(0);
                 for (Drinks drinks : drinksList) {
                     tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
                             String.valueOf(drinks.getVolume())});
