@@ -106,6 +106,7 @@ public class Gui {
             public void actionPerformed(ActionEvent e) {
 
                 tableModel.removeRow(table.getSelectedRow());
+                drinksList.remove(table.getSelectedRow()+1);
                 JOptionPane.showMessageDialog(null,"Deleted Row!");
                 System.out.println(drinksList);
             }
