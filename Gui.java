@@ -123,7 +123,18 @@ public class Gui {
 //                gbc.gridy = 1;
 //                panel.add(sortList, gbc);
 
+        // Filter button logic
+        filterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String filterType = JOptionPane.showInputDialog("Enter Type");
+                Drinks.findType(drinksList, filterType);
+            }
+        });
 
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        panel.add(filterButton, gbc);
 
         //Sort by column
         table.setAutoCreateRowSorter(true);
