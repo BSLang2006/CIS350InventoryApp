@@ -128,6 +128,7 @@ public class Gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String filterType = JOptionPane.showInputDialog("Enter Type");
+                tableModel.setRowCount(0);
                 Drinks.findType(drinksList, filterType);
             }
         });
@@ -140,7 +141,7 @@ public class Gui {
         table.setAutoCreateRowSorter(true);
 
 
-        gui.setSize(700, 600);
+        gui.setSize(750, 600);
         gui.add(panel);
         gui.setVisible(true);
 
