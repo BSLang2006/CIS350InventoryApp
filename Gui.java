@@ -3,16 +3,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
 
 public class Gui {
 
     GridBagConstraints gbc = new GridBagConstraints();
-    JButton button = new JButton("Add");
-    JButton button2 = new JButton("Remove");
+    JButton addButton = new JButton("Add");
+    JButton remButton = new JButton("Remove");
+    JButton filterButton = new JButton("Filter");
 
     public Gui() {
         JFrame gui = new JFrame("Bar Inventory");
@@ -56,7 +55,7 @@ public class Gui {
         drinksList.add(Patron);
         drinksList.add(Jack);
 
-        // testing adding a drink
+        // for adding a new drink
         Drinks testDrink = new Drinks(null, null, 0, 0);
 
         DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
@@ -70,7 +69,8 @@ public class Gui {
 
         panel.add(scrollPane);
 
-        button.addActionListener(new ActionListener() {
+        // Add button logic
+        addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 JOptionPane.showMessageDialog(null, addPanel,
@@ -96,14 +96,13 @@ public class Gui {
         gbc.gridheight = 5;
         //gbc.gridwidth = 5;
         //gbc.fill = GridBagConstraints.VERTICAL;
-        panel.add(button, gbc);
+        panel.add(addButton, gbc);
 
         //Select a row
         table.setRowSelectionAllowed(true);
 
-
-
-        button2.addActionListener(new ActionListener() {
+        // Remove button logic
+        remButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 int drinkIndex = table.getSelectedRow();
@@ -116,13 +115,15 @@ public class Gui {
         });
         gbc.gridx = 2;
         gbc.gridy = 0;
-        panel.add(button2, gbc);
+        panel.add(remButton, gbc);
 
 //                String[] sortOptions = {"brand", "type", "volume", "Price", "None"};
 //                JComboBox<String> sortList = new JComboBox<String>(sortOptions);
 //                gbc.gridx = 1;
 //                gbc.gridy = 1;
 //                panel.add(sortList, gbc);
+
+
 
         //Sort by column
         table.setAutoCreateRowSorter(true);
