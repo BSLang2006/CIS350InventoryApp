@@ -74,12 +74,14 @@ public class Drinks {
 //        return filteredList;
 //    }
 
-    public static void findType (ArrayList<Drinks> list, String s) {
+    public static ArrayList<Drinks> findType (ArrayList<Drinks> list, String s) {
+        ArrayList<Drinks> tempList = new ArrayList<>();
         for (Drinks drinks : list) {
             if (drinks.getType().equalsIgnoreCase(s)) {
-                System.out.println(drinks);
+                tempList.add(drinks);
             }
         }
+        return tempList;
     }
 
 //    public static Liquor findBrand (ArrayList<Liquor> list, String s) {
@@ -92,12 +94,14 @@ public class Drinks {
 //        return null;
 //    }
 
-    public static void findBrand (ArrayList<Drinks> list, String s) {
+    public static ArrayList<Drinks> findBrand (ArrayList<Drinks> list, String s) {
+        ArrayList<Drinks> tempList = new ArrayList<>();
         for (Drinks drinks : list) {
             if (drinks.getBrand().equalsIgnoreCase(s)) {
-                System.out.println(drinks);
+                tempList.add(drinks);
             }
         }
+        return tempList;
     }
     public static String totalPrice(ArrayList<Drinks> list) {
         double price = 0.0;

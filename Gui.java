@@ -115,11 +115,14 @@ public class Gui {
 
         // Filter button logic
         filterButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 String filterType = JOptionPane.showInputDialog("Enter Type");
                 tableModel.setRowCount(0);
-                Drinks.findType(drinksList, filterType);
+                ArrayList<Drinks> tempList = Drinks.findType(drinksList, filterType);
+                for (Drinks drinks : tempList) {
+                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                            String.valueOf(drinks.getVolume())});
+                }
             }
         });
 
