@@ -12,6 +12,7 @@ public class Gui {
     JButton addButton = new JButton("Add");
     JButton remButton = new JButton("Remove");
     JButton filterButton = new JButton("Filter");
+    JButton refreshButton = new JButton("Refresh");
 
     public Gui() {
         JFrame gui = new JFrame("Bar Inventory");
@@ -137,6 +138,21 @@ public class Gui {
         gbc.gridx = 3;
         gbc.gridy = 0;
         panel.add(filterButton, gbc);
+
+        // Refresh button logic
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tableModel.setRowCount(0);
+                for (Drinks drinks : drinksList) {
+                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                            String.valueOf(drinks.getVolume())});
+                }
+            }
+        });
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        panel.add(refreshButton, gbc);
 
         //Sort by column
         table.setAutoCreateRowSorter(true);
