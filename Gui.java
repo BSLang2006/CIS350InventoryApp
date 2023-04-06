@@ -20,6 +20,13 @@ public class Gui {
 
         panel.setLayout(new GridBagLayout());
 
+        JLabel title = new JLabel("Bar Inventory Manager");
+        title.setFont(new Font("Helvetica", Font.PLAIN, 16));
+        title.setVerticalAlignment(JLabel.TOP);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(title, gbc);
+
         // for add button
         JLabel brandLabel = new JLabel("Brand");
         JLabel typeLabel = new JLabel("Type");
@@ -65,8 +72,9 @@ public class Gui {
         }
         JTable table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
-
-        panel.add(scrollPane);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(scrollPane, gbc);
 
         // Add button logic
         addButton.addActionListener(new ActionListener() {
@@ -136,6 +144,7 @@ public class Gui {
 
         gui.setSize(750, 600);
         gui.add(panel);
+        gui.pack();
         gui.setVisible(true);
     }
 
