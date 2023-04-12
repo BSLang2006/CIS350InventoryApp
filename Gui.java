@@ -11,7 +11,8 @@ public class Gui {
     GridBagConstraints gbc = new GridBagConstraints();
     JButton addButton = new JButton("Add");
     JButton remButton = new JButton("Remove");
-    JButton filterButton = new JButton("Filter");
+    JButton filterBrand = new JButton("Filter Brand");
+    JButton filterType = new JButton("Filter Type");
     JButton refreshButton = new JButton("Refresh");
 
     public Gui() {
@@ -22,11 +23,18 @@ public class Gui {
         panel.setLayout(new GridBagLayout());
 
         JLabel title = new JLabel("Bar Inventory Manager");
-        title.setFont(new Font("Helvetica", Font.PLAIN, 16));
+        title.setFont(new Font("Helvetica", Font.BOLD, 24));
         title.setVerticalAlignment(JLabel.TOP);
         gbc.gridx = 0;
         gbc.gridy = 0;
         panel.add(title, gbc);
+
+        // Fonts for buttons
+        addButton.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        remButton.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        filterBrand.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        filterType.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        refreshButton.setFont(new Font("Helvetica", Font.PLAIN, 12));
 
         // for add button
         JLabel brandLabel = new JLabel("Brand");
@@ -123,7 +131,7 @@ public class Gui {
         panel.add(remButton, gbc);
 
         // Filter button logic
-        filterButton.addActionListener(new ActionListener() {
+        filterType.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String filterType = JOptionPane.showInputDialog("Enter Type");
                 tableModel.setRowCount(0);
@@ -137,7 +145,24 @@ public class Gui {
 
         gbc.gridx = 3;
         gbc.gridy = 0;
-        panel.add(filterButton, gbc);
+        panel.add(filterType, gbc);
+
+        // filter brand logic
+        filterBrand.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String filter = JOptionPane.showInputDialog("Enter Brand");
+                tableModel.setRowCount(0);
+                ArrayList<Drinks> tempList = Drinks.findBrand(drinksList, filter);
+                for (Drinks drinks : tempList) {
+                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                            String.valueOf(drinks.getVolume())});
+                }
+            }
+        });
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        panel.add(filterBrand, gbc);
 
         // Refresh button logic
         refreshButton.addActionListener(new ActionListener() {
@@ -150,7 +175,7 @@ public class Gui {
                 }
             }
         });
-        gbc.gridx = 4;
+        gbc.gridx = 5;
         gbc.gridy = 0;
         panel.add(refreshButton, gbc);
 
