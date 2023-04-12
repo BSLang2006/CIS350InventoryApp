@@ -92,9 +92,6 @@ public class Gui {
                 JOptionPane.showMessageDialog(null, addPanel,
                         "Enter Values", JOptionPane.PLAIN_MESSAGE);
                 testDrink.setBrand(brandField.getText());
-                if (brandField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null,"Field is blank!");
-                }
                 testDrink.setType(typeField.getText());
                 testDrink.setPrice(Double.parseDouble(priceField.getText()));
                 testDrink.setVolume(Integer.parseInt(volField.getText()));
