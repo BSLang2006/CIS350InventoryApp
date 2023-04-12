@@ -1,4 +1,3 @@
-/*
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -112,4 +111,3 @@ public class DrinksTest {
         assertEquals("$45.00", Drinks.totalPrice(list));
     }
 }
-*/
