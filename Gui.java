@@ -92,7 +92,15 @@ public class Gui {
                 JOptionPane.showMessageDialog(null, addPanel,
                         "Enter Values", JOptionPane.PLAIN_MESSAGE);
                 try {
-                    testDrink.setBrand(brandField.getText());
+                    if (brandField.getText().equals("")) {
+                        throw new IllegalArgumentException();
+                    } else if (typeField.getText().equals("")) {
+                        throw new IllegalArgumentException();
+                    } else if (priceField.getText().equals("")) {
+                        throw new IllegalArgumentException();
+                    } else if (volField.getText().equals("")) {
+                        throw new IllegalArgumentException();
+                    }
                 }
                 catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "No! Bad!");
