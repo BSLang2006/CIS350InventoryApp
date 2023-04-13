@@ -96,10 +96,12 @@ public class Gui {
                         testDrink.setBrand(brandField.getText());
                         if (brandField.getText().equals("")) {
                             throw new IllegalArgumentException();
+                        } else if (!brandField.getText().equals("Vodka") && !brandField.getText().equals("Gin")) {
+                            throw new IllegalArgumentException();
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Error!");
+                        JOptionPane.showMessageDialog(null, "Enter a correct Brand!");
                         break;
                     }
                     try {
@@ -132,6 +134,7 @@ public class Gui {
                         JOptionPane.showMessageDialog(null, "Error!");
                         break;
                     }
+
                     drinksList.add(testDrink);
                     tableModel.setRowCount(0);
                     for (Drinks drinks : drinksList) {
