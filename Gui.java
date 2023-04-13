@@ -88,33 +88,83 @@ public class Gui {
         // Add button logic
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                boolean test = true;
                 JOptionPane.showMessageDialog(null, addPanel,
                         "Enter Values", JOptionPane.PLAIN_MESSAGE);
-                try {
-                    if (brandField.getText().equals("")) {
-                        throw new IllegalArgumentException();
-                    } else if (typeField.getText().equals("")) {
-                        throw new IllegalArgumentException();
-                    } else if (priceField.getText().equals("")) {
-                        throw new IllegalArgumentException();
-                    } else if (volField.getText().equals("")) {
-                        throw new IllegalArgumentException();
+                while (test) {
+                    try {
+                        testDrink.setBrand(brandField.getText());
+                        if (brandField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
                     }
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error!");
+                        break;
+                    }
+                    try {
+                        testDrink.setType(typeField.getText());
+                        if (typeField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    }
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error!");
+                        break;
+                    }
+                    try {
+                        testDrink.setPrice(Double.parseDouble(priceField.getText()));
+                        if (priceField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    }
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error!");
+                        break;
+                    }
+                    try {
+                        testDrink.setVolume(Integer.parseInt(volField.getText()));
+                        if (volField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    }
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error!");
+                        break;
+                    }
+                    drinksList.add(testDrink);
+                    tableModel.setRowCount(0);
+                    for (Drinks drinks : drinksList) {
+                        tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                                String.valueOf(drinks.getVolume())});
+                    }
+                    test = false;
                 }
-                catch (Exception exception) {
-                    JOptionPane.showMessageDialog(null, "No! Bad!");
-                }
-                testDrink.setType(typeField.getText());
-                testDrink.setPrice(Double.parseDouble(priceField.getText()));
-                testDrink.setVolume(Integer.parseInt(volField.getText()));
-                drinksList.add(testDrink);
-                tableModel.setRowCount(0);
-                for (Drinks drinks : drinksList) {
-                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-                            String.valueOf(drinks.getVolume())});
-                }
-                System.out.println(drinksList);
+//                try {
+//                    if (brandField.getText().equals("")) {
+//                        throw new IllegalArgumentException();
+//                    } else if (typeField.getText().equals("")) {
+//                        throw new IllegalArgumentException();
+//                    } else if (priceField.getText().equals("")) {
+//                        throw new IllegalArgumentException();
+//                    } else if (volField.getText().equals("")) {
+//                        throw new IllegalArgumentException();
+//                    }
+//                }
+//                catch (Exception exception) {
+//                    JOptionPane.showMessageDialog(null, "No! Bad!");
+//                }
+//                testDrink.setBrand(brandField.getText());
+//                testDrink.setType(typeField.getText());
+//                testDrink.setPrice(Double.parseDouble(priceField.getText()));
+//                testDrink.setVolume(Integer.parseInt(volField.getText()));
+//                drinksList.add(testDrink);
+//                tableModel.setRowCount(0);
+//                for (Drinks drinks : drinksList) {
+//                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+//                            String.valueOf(drinks.getVolume())});
+//                }
+//                System.out.println(drinksList);
             }
         });
         gbc.ipadx = 10;
@@ -136,7 +186,7 @@ public class Gui {
                 drinksList.remove(drinkIndex);
 
                 JOptionPane.showMessageDialog(null,"Deleted Row!");
-                System.out.println(drinksList);
+//                System.out.println(drinksList);
             }
         });
         gbc.gridx = 2;
