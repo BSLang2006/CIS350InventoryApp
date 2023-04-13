@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
+import java.util.Arrays;
 
 public class Gui {
 
@@ -82,6 +83,9 @@ public class Gui {
         gbc.gridy = 1;
         panel.add(scrollPane, gbc);
 
+        // Array of valid drink types
+        String[] drinkTypes = {"vodka", "gin", "whiskey", "wine", "beer", "champagne"};
+
         // Add button logic
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -103,12 +107,12 @@ public class Gui {
                     }
                     try {
                         tempDrink.setType(typeField.getText());
+//                        String tempString = typeField.getText().toUpperCase();
+//                        System.out.println(tempString);
                         if (typeField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
-                        else if (!typeField.getText().equals("Vodka") || !typeField.getText().equals("Gin")
-                                || !typeField.getText().equals("Whiskey") || !typeField.getText().equals("Beer")
-                                || !typeField.getText().equals("Champagne")) {
+                        else if (!Arrays.asList(drinkTypes).contains(tempDrink.getType().toLowerCase())) {
                             throw new IllegalArgumentException();
                         }
                     }
