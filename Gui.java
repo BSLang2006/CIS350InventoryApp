@@ -106,6 +106,11 @@ public class Gui {
                         if (typeField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
+                        else if (!typeField.getText().equals("Vodka") || !typeField.getText().equals("Gin")
+                                || !typeField.getText().equals("Whiskey") || !typeField.getText().equals("Beer")
+                                || !typeField.getText().equals("Champagne")) {
+                            throw new IllegalArgumentException();
+                        }
                     }
                     catch (Exception exception) {
                         JOptionPane.showMessageDialog(null, "Error!");
