@@ -102,7 +102,7 @@ public class Gui {
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Error!");
+                        JOptionPane.showMessageDialog(null, "Brand field is blank");
                         break;
                     }
                     try {
@@ -117,7 +117,7 @@ public class Gui {
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Error!");
+                        JOptionPane.showMessageDialog(null, "Type field is blank");
                         break;
                     }
                     try {
@@ -127,7 +127,7 @@ public class Gui {
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Error!");
+                        JOptionPane.showMessageDialog(null, "Price field is blank");
                         break;
                     }
                     try {
@@ -137,7 +137,7 @@ public class Gui {
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Error!");
+                        JOptionPane.showMessageDialog(null, "Volume field is blank");
                         break;
                     }
                     drinksList.add(tempDrink);
@@ -196,7 +196,7 @@ public class Gui {
                         tableModel.removeRow(drinkIndex);
                         drinksList.remove(drinkIndex);
                         JOptionPane.showMessageDialog(null,"Deleted Row!");
-                        System.out.println(drinksList);
+//                        System.out.println(drinksList);
                     }
                     else {
                         throw new IllegalArgumentException();
@@ -221,13 +221,42 @@ public class Gui {
         // Filter button logic
         filterType.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String filterType = JOptionPane.showInputDialog("Enter Type");
-                tableModel.setRowCount(0);
-                ArrayList<Drinks> tempList = Drinks.findType(drinksList, filterType);
-                for (Drinks drinks : tempList) {
-                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-                            String.valueOf(drinks.getVolume())});
+                String filter;
+                boolean test = true;
+                while (test) {
+                    try {
+                        filter = JOptionPane.showInputDialog("Enter Type");
+                        if (filter.equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    }
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error");
+                        break;
+                    }
+                    tableModel.setRowCount(0);
+                    ArrayList<Drinks> tempList = Drinks.findType(drinksList, filter);
+                    for (Drinks drinks : tempList) {
+                        tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                                String.valueOf(drinks.getVolume())});
+                    }
+                    test = false;
                 }
+//                try {
+//                    filterType = JOptionPane.showInputDialog("Enter Type");
+//                    if (filterType.equals("")) {
+//                        throw new IllegalArgumentException();
+//                    }
+//                }
+//                catch (Exception exception) {
+//                    JOptionPane.showMessageDialog(null, "Error");
+//                }
+//                tableModel.setRowCount(0);
+//                ArrayList<Drinks> tempList = Drinks.findType(drinksList, filterType);
+//                for (Drinks drinks : tempList) {
+//                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+//                            String.valueOf(drinks.getVolume())});
+//                }
             }
         });
 
@@ -237,15 +266,35 @@ public class Gui {
 
         // filter brand logic
         filterBrand.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-                String filter = JOptionPane.showInputDialog("Enter Brand");
-                tableModel.setRowCount(0);
-                ArrayList<Drinks> tempList = Drinks.findBrand(drinksList, filter);
-                for (Drinks drinks : tempList) {
-                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-                            String.valueOf(drinks.getVolume())});
+                String filter;
+                boolean test = true;
+                while (test) {
+                    try {
+                        filter = JOptionPane.showInputDialog("Enter Brand");
+                        if (filter.equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    }
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Text field is blank");
+                        break;
+                    }
+                    tableModel.setRowCount(0);
+                    ArrayList<Drinks> tempList = Drinks.findBrand(drinksList, filter);
+                    for (Drinks drinks : tempList) {
+                        tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+                                String.valueOf(drinks.getVolume())});
+                    }
+                    test = false;
                 }
+//                filter = JOptionPane.showInputDialog("Enter Brand");
+//                tableModel.setRowCount(0);
+//                ArrayList<Drinks> tempList = Drinks.findBrand(drinksList, filter);
+//                for (Drinks drinks : tempList) {
+//                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
+//                            String.valueOf(drinks.getVolume())});
+//                }
             }
         });
         gbc.gridx = 4;
