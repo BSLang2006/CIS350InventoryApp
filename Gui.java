@@ -181,11 +181,27 @@ public class Gui {
         remButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                int drinkIndex = table.getSelectedRow();
-                tableModel.removeRow(drinkIndex);
-                drinksList.remove(drinkIndex);
-
-                JOptionPane.showMessageDialog(null,"Deleted Row!");
+                try {
+                    int drinkIndex = table.getSelectedRow();
+                    if (drinkIndex != -1) {
+                        tableModel.removeRow(drinkIndex);
+                        drinksList.remove(drinkIndex);
+                        JOptionPane.showMessageDialog(null,"Deleted Row!");
+                        System.out.println(drinksList);
+                    }
+                    else {
+                        throw new IllegalArgumentException();
+                    }
+                }
+                catch (Exception exception) {
+                    JOptionPane.showMessageDialog(null,
+                            "You must select a row first!");
+                }
+//                int drinkIndex = table.getSelectedRow();
+//                tableModel.removeRow(drinkIndex);
+//                drinksList.remove(drinkIndex);
+//
+//                JOptionPane.showMessageDialog(null,"Deleted Row!");
 //                System.out.println(drinksList);
             }
         });
