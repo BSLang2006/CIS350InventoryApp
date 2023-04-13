@@ -70,9 +70,6 @@ public class Gui {
         drinksList.add(Patron);
         drinksList.add(Jack);
 
-        // for adding a new drink
-        Drinks testDrink = new Drinks(null, null, 0, 0);
-
         DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
 
         for (Drinks drinks : drinksList) {
@@ -88,24 +85,24 @@ public class Gui {
         // Add button logic
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // for adding a new drink
+                Drinks tempDrink = new Drinks(null, null, 0, 0);
                 boolean test = true;
                 JOptionPane.showMessageDialog(null, addPanel,
                         "Enter Values", JOptionPane.PLAIN_MESSAGE);
                 while (test) {
                     try {
-                        testDrink.setBrand(brandField.getText());
+                        tempDrink.setBrand(brandField.getText());
                         if (brandField.getText().equals("")) {
-                            throw new IllegalArgumentException();
-                        } else if (!brandField.getText().equals("Vodka") && !brandField.getText().equals("Gin")) {
                             throw new IllegalArgumentException();
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Enter a correct Brand!");
+                        JOptionPane.showMessageDialog(null, "Error!");
                         break;
                     }
                     try {
-                        testDrink.setType(typeField.getText());
+                        tempDrink.setType(typeField.getText());
                         if (typeField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
@@ -115,7 +112,7 @@ public class Gui {
                         break;
                     }
                     try {
-                        testDrink.setPrice(Double.parseDouble(priceField.getText()));
+                        tempDrink.setPrice(Double.parseDouble(priceField.getText()));
                         if (priceField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
@@ -125,7 +122,7 @@ public class Gui {
                         break;
                     }
                     try {
-                        testDrink.setVolume(Integer.parseInt(volField.getText()));
+                        tempDrink.setVolume(Integer.parseInt(volField.getText()));
                         if (volField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
@@ -134,8 +131,7 @@ public class Gui {
                         JOptionPane.showMessageDialog(null, "Error!");
                         break;
                     }
-
-                    drinksList.add(testDrink);
+                    drinksList.add(tempDrink);
                     tableModel.setRowCount(0);
                     for (Drinks drinks : drinksList) {
                         tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
