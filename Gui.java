@@ -173,6 +173,7 @@ public class Gui {
         gbc.gridheight = 5;
         panel.add(addButton, gbc);
 
+
         //Select a row
         table.setRowSelectionAllowed(true);
 
