@@ -59,6 +59,45 @@ public class DrinksTest {
         assertEquals(24, test.getVolume());
     }
 
+
+    @Test
+    public void testFindType() {
+        ArrayList<Drinks> list = new ArrayList<>();
+        ArrayList<Drinks> list2;
+
+        Drinks t1 = new Drinks("Gin", "Hendricks", 15.00, 24);
+        Drinks t2 = new Drinks("Whiskey", "Jameson", 15.00, 24);
+        Drinks t3 = new Drinks("Vodka", "Smirnoff", 15.00, 24);
+
+        list.add(t1);
+        list.add(t2);
+        list.add(t3);
+
+        list2 = Drinks.findType(list,"Vodka");
+        assertEquals(list2.get(0).getType(),"Gin");
+
+        }
+
+    @Test
+    public void testFindBrand() {
+        ArrayList<Drinks> list = new ArrayList<>();
+        ArrayList<Drinks> list2;
+
+        Drinks t1 = new Drinks("Gin", "Hendricks", 15.00, 24);
+        Drinks t2 = new Drinks("Whiskey", "Jameson", 15.00, 24);
+        Drinks t3 = new Drinks("Vodka", "Smirnoff", 15.00, 24);
+
+        list.add(t1);
+        list.add(t2);
+        list.add(t3);
+
+        list2 = Drinks.findBrand(list,"Jameson");
+        assertEquals(list2.get(0).getBrand(),"Jameson");
+
+    }
+
+
+
 //    @Test
 //    public void testFindBrand() {
 //        ArrayList<Liquor> list = new ArrayList<>();
