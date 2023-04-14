@@ -59,7 +59,6 @@ public class DrinksTest {
         assertEquals(24, test.getVolume());
     }
 
-
     @Test
     public void testFindType() {
         ArrayList<Drinks> list = new ArrayList<>();
@@ -74,9 +73,10 @@ public class DrinksTest {
         list.add(t3);
 
         list2 = Drinks.findType(list,"Vodka");
-        assertEquals(list2.get(0).getType(),"Gin");
 
-        }
+        System.out.println(list2);
+        assertEquals(list2.get(0).getType(),"Vodka");
+    }
 
     @Test
     public void testFindBrand() {
@@ -93,46 +93,7 @@ public class DrinksTest {
 
         list2 = Drinks.findBrand(list,"Jameson");
         assertEquals(list2.get(0).getBrand(),"Jameson");
-
     }
-
-
-
-//    @Test
-//    public void testFindBrand() {
-//        ArrayList<Liquor> list = new ArrayList<>();
-//
-//        Liquor t1 = new Liquor("Gin", "Hendricks", 15.00, 24);
-//        Liquor t2 = new Liquor("Whiskey", "Jameson", 15.00, 24);
-//        Liquor t3 = new Liquor("Vodka", "Smirnoff", 15.00, 24);
-//
-//        list.add(t1);
-//        list.add(t2);
-//        list.add(t3);
-//
-//        ArrayList<Liquor> list2 = new ArrayList<>();
-//        list2.add(Liquor.findBrand(list, "Jameson"));
-//
-//        assertEquals("Jameson", list2.get(0).getBrand());
-//    }
-//
-//    @Test
-//    public void testFindType() {
-//        ArrayList<Liquor> list = new ArrayList<>();
-//
-//        Liquor t1 = new Liquor("Gin", "Hendricks", 15.00, 24);
-//        Liquor t2 = new Liquor("Whiskey", "Jameson", 15.00, 24);
-//        Liquor t3 = new Liquor("Vodka", "Smirnoff", 15.00, 24);
-//
-//        list.add(t1);
-//        list.add(t2);
-//        list.add(t3);
-//
-//        ArrayList<Liquor> list2 = new ArrayList<>();
-//        list2.add(Liquor.findType(list, "Gin"));
-//
-//        assertEquals("Gin", list2.get(0).getType());
-//    }
 
     @Test
     public void testTotalPrice() {
