@@ -34,7 +34,13 @@ public class Drinks {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+//        this.price = price;
+        if (price > 0) {
+            this.price = price;
+        }
+        else {
+            throw new IllegalArgumentException("Error setting price");
+        }
     }
 
     public String getPrice() {
@@ -46,7 +52,13 @@ public class Drinks {
     }
 
     public void setVolume(int volume) {
-        this.volume = volume;
+//        this.volume = volume;
+        if (volume > 0) {
+            this.volume = volume;
+        }
+        else {
+            throw new IllegalArgumentException("Error setting volume");
+        }
     }
 
     public int getVolume() {
@@ -57,21 +69,10 @@ public class Drinks {
         return "Brand: " + this.getBrand() + ", Type: " + this.type + ", Price: " + dollar.format(this.price) +
                 ", Volume (oz): " + this.volume;
     }
-    public static void printInventory(ArrayList<Drinks> list) {
-        for (Drinks drinks : list) {
-            System.out.println(drinks);
-        }
-    }
-
-//    public static ArrayList<Liquor> findType (ArrayList<Liquor> list, String s) {
-//
-//        ArrayList<Liquor> filteredList = new ArrayList<>();
-//        for (Liquor liquor : list) {
-//            if (liquor.getType().equalsIgnoreCase(s)) {
-//                filteredList.add(liquor);
-//            }
+//    public static void printInventory(ArrayList<Drinks> list) {
+//        for (Drinks drinks : list) {
+//            System.out.println(drinks);
 //        }
-//        return filteredList;
 //    }
 
     public static ArrayList<Drinks> findType (ArrayList<Drinks> list, String s) {
@@ -83,16 +84,6 @@ public class Drinks {
         }
         return tempList;
     }
-
-//    public static Liquor findBrand (ArrayList<Liquor> list, String s) {
-//        for (Liquor liquor : list) {
-//            if (liquor.getBrand().equalsIgnoreCase(s)) {
-//                System.out.println(liquor);
-//                return liquor;
-//            }
-//        }
-//        return null;
-//    }
 
     public static ArrayList<Drinks> findBrand (ArrayList<Drinks> list, String s) {
         ArrayList<Drinks> tempList = new ArrayList<>();

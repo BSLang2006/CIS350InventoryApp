@@ -125,9 +125,12 @@ public class Gui {
                         if (priceField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
+                        if (Double.parseDouble(priceField.getText()) < 0.0) {
+                            throw new IllegalArgumentException();
+                        }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Price field is blank");
+                        JOptionPane.showMessageDialog(null, "Error in price field");
                         break;
                     }
                     try {
@@ -135,9 +138,12 @@ public class Gui {
                         if (volField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
+                        if (Integer.parseInt(volField.getText()) < 0) {
+                            throw new IllegalArgumentException();
+                        }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Volume field is blank");
+                        JOptionPane.showMessageDialog(null, "Error in volume field");
                         break;
                     }
                     drinksList.add(tempDrink);
