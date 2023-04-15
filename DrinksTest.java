@@ -59,6 +59,19 @@ public class DrinksTest {
         assertEquals(24, test.getVolume());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetVolumeNegative() {
+        Drinks test = new Drinks("Gin", "Brand", 10.00, 0);
+        test.setVolume(-24);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetPriceNegative() {
+        Drinks test = new Drinks("Gin", "Brand", 0, 64);
+        test.setPrice(-64);
+
+    }
+
     @Test
     public void testFindType() {
         ArrayList<Drinks> list = new ArrayList<>();
