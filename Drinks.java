@@ -69,11 +69,6 @@ public class Drinks {
         return "Brand: " + this.getBrand() + ", Type: " + this.type + ", Price: " + dollar.format(this.price) +
                 ", Volume (oz): " + this.volume;
     }
-//    public static void printInventory(ArrayList<Drinks> list) {
-//        for (Drinks drinks : list) {
-//            System.out.println(drinks);
-//        }
-//    }
 
     public static ArrayList<Drinks> findType (ArrayList<Drinks> list, String s) {
         ArrayList<Drinks> tempList = new ArrayList<>();
