@@ -1,6 +1,14 @@
 public class Liquor extends Drinks {
 
-    public Liquor(String drinkType, String drinkBrand, double drinkPrice, int drinkVol) {
+    /**
+     *
+     * @param drinkType
+     * @param drinkBrand
+     * @param drinkPrice
+     * @param drinkVol
+     */
+    public Liquor(final String drinkType, final String drinkBrand,
+                  final double drinkPrice, final int drinkVol) {
         super(drinkType, drinkBrand, drinkPrice, drinkVol);
     }
 }
