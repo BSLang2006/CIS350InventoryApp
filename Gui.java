@@ -107,8 +107,6 @@ public class Gui {
                     }
                     try {
                         tempDrink.setType(typeField.getText());
-//                        String tempString = typeField.getText().toUpperCase();
-//                        System.out.println(tempString);
                         if (typeField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
@@ -154,31 +152,6 @@ public class Gui {
                     }
                     test = false;
                 }
-//                try {
-//                    if (brandField.getText().equals("")) {
-//                        throw new IllegalArgumentException();
-//                    } else if (typeField.getText().equals("")) {
-//                        throw new IllegalArgumentException();
-//                    } else if (priceField.getText().equals("")) {
-//                        throw new IllegalArgumentException();
-//                    } else if (volField.getText().equals("")) {
-//                        throw new IllegalArgumentException();
-//                    }
-//                }
-//                catch (Exception exception) {
-//                    JOptionPane.showMessageDialog(null, "No! Bad!");
-//                }
-//                testDrink.setBrand(brandField.getText());
-//                testDrink.setType(typeField.getText());
-//                testDrink.setPrice(Double.parseDouble(priceField.getText()));
-//                testDrink.setVolume(Integer.parseInt(volField.getText()));
-//                drinksList.add(testDrink);
-//                tableModel.setRowCount(0);
-//                for (Drinks drinks : drinksList) {
-//                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-//                            String.valueOf(drinks.getVolume())});
-//                }
-//                System.out.println(drinksList);
             }
         });
         gbc.ipadx = 10;
