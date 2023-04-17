@@ -212,12 +212,6 @@ public class Gui {
                     JOptionPane.showMessageDialog(null,
                             "You must select a row first!");
                 }
-//                int drinkIndex = table.getSelectedRow();
-//                tableModel.removeRow(drinkIndex);
-//                drinksList.remove(drinkIndex);
-//
-//                JOptionPane.showMessageDialog(null,"Deleted Row!");
-//                System.out.println(drinksList);
             }
         });
         gbc.gridx = 2;
@@ -248,21 +242,6 @@ public class Gui {
                     }
                     test = false;
                 }
-//                try {
-//                    filterType = JOptionPane.showInputDialog("Enter Type");
-//                    if (filterType.equals("")) {
-//                        throw new IllegalArgumentException();
-//                    }
-//                }
-//                catch (Exception exception) {
-//                    JOptionPane.showMessageDialog(null, "Error");
-//                }
-//                tableModel.setRowCount(0);
-//                ArrayList<Drinks> tempList = Drinks.findType(drinksList, filterType);
-//                for (Drinks drinks : tempList) {
-//                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-//                            String.valueOf(drinks.getVolume())});
-//                }
             }
         });
 
@@ -294,13 +273,6 @@ public class Gui {
                     }
                     test = false;
                 }
-//                filter = JOptionPane.showInputDialog("Enter Brand");
-//                tableModel.setRowCount(0);
-//                ArrayList<Drinks> tempList = Drinks.findBrand(drinksList, filter);
-//                for (Drinks drinks : tempList) {
-//                    tableModel.addRow(new String[]{drinks.getBrand(), drinks.getType(), drinks.getPrice(),
-//                            String.valueOf(drinks.getVolume())});
-//                }
             }
         });
         gbc.gridx = 4;
@@ -324,7 +296,6 @@ public class Gui {
 
         //Sort by column
         table.setAutoCreateRowSorter(true);
-
 
         gui.setSize(750, 600);
         gui.add(panel);
