@@ -125,7 +125,7 @@ public class Gui {
                         }
                     }
                     catch (Exception exception) {
-                        JOptionPane.showMessageDialog(null, "Type field is blank");
+                        JOptionPane.showMessageDialog(null, "Invalid drink type");
                         break;
                     }
                     try {
