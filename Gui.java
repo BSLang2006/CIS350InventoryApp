@@ -94,7 +94,7 @@ public class Gui {
         panel.add(scrollPane, gbc);
 
         // Array of valid drink types
-        String[] drinkTypes = {"vodka", "gin", "whiskey", "wine", "beer", "champagne"};
+        String[] drinkTypes = {"vodka", "gin", "whiskey", "wine", "beer", "champagne","tequila"};
 
         // Add button logic
         addButton.addActionListener(new ActionListener() {
@@ -106,7 +106,9 @@ public class Gui {
                         "Enter Values", JOptionPane.PLAIN_MESSAGE);
                 while (test) {
                     try {
-                        tempDrink.setBrand(brandField.getText());
+                        tempDrink.setBrand(brandField.getText().toLowerCase());
+                        tempDrink.setBrand(brandField.getText().substring(0, 1).toUpperCase()
+                                + brandField.getText().substring(1));
                         if (brandField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
@@ -116,7 +118,9 @@ public class Gui {
                         break;
                     }
                     try {
-                        tempDrink.setType(typeField.getText());
+                        tempDrink.setType(typeField.getText().toLowerCase());
+                        tempDrink.setType(typeField.getText().substring(0, 1).toUpperCase()
+                                + typeField.getText().substring(1));
                         if (typeField.getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
@@ -279,9 +283,9 @@ public class Gui {
         //Sort by column
         table.setAutoCreateRowSorter(true);
 
-        gui.setSize(750, 600);
+        gui.setSize(1000, 550);
         gui.add(panel);
-        gui.pack();
+        //gui.pack();
         gui.setVisible(true);
     }
 
