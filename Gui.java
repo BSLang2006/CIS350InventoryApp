@@ -1,4 +1,3 @@
-//import java.awt.*;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -14,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.util.Arrays;
 
@@ -97,6 +98,33 @@ public class Gui {
         // Array of valid drink types
         String[] drinkTypes = {"vodka", "gin", "whiskey", "wine",
                 "beer", "champagne", "tequila"};
+
+        tableModel.addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+
+                if (e.getType() == TableModelEvent.UPDATE) {
+
+                    int row = e.getFirstRow();
+                    int col = e.getColumn();
+
+                    Drinks d = drinksList.get(row);
+                    Object o = tableModel.getValueAt(row, col);
+
+                    if (col == 0) {
+                        d.setBrand(o.toString());
+                    } else if (col == 1) {
+                        d.setType(o.toString());
+                    } else if (col == 2) {
+                        d.setPrice(Double.parseDouble(o.toString()));
+                    } else if (col == 3) {
+                        d.setVolume(Integer.parseInt(o.toString()));
+                    } else {
+                        throw new IllegalArgumentException();
+                    }
+                }
+            }
+        });
 
         // Add button logic
         addButton.addActionListener(new ActionListener() {
