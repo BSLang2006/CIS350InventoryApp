@@ -1,28 +1,42 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-/**
- * This holds all of our functions for drinks.
- */
 public class Drinks {
 
-    String type; // whiskey, vodka, etc.
-    String brand;
-    double price;
-    int volume;
-
-    static DecimalFormat dollar = new DecimalFormat("$##.00");
+    /**
+     * The drink's type (whiskey, vodka, etc.).
+     */
+    private String type;
 
     /**
-     * Constructor for Drinks.
-     *
-     * @param drinkType;
-     * @param drinkBrand;
-     * @param drinkPrice;
-     * @param drinkVol;
+     * The drink's brand (Patron, Smirnoff, etc.).
      */
-    public Drinks(String drinkType, String drinkBrand,
-                  double drinkPrice, int drinkVol) {
+    private String brand;
+
+    /**
+     * The drink's price.
+     */
+    private double price;
+
+    /**
+     * The volume of the drink.
+     */
+    private int volume;
+
+    /**
+     * Formatting to currency format.
+     */
+    private static DecimalFormat dollar = new DecimalFormat("$##.00");
+
+    /**
+     * Drink constructor.
+     * @param drinkType the drink's type.
+     * @param drinkBrand the drink's brand.
+     * @param drinkPrice the drink's price.
+     * @param drinkVol the drink's volume.
+     */
+    public Drinks(final String drinkType, final String drinkBrand,
+                  final double drinkPrice, final int drinkVol) {
         type = drinkType;
         brand = drinkBrand;
         price = drinkPrice;
@@ -30,176 +44,140 @@ public class Drinks {
     }
 
     /**
-     * Set the brand of the drink.
-     *
-     * @param brand;
+     * Brand setter.
+     * @param brand the drink's brand.
      */
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
     /**
-     * Fetch the brand of the drink.
-     *
-     * @return brand
+     * Brand getter.
+     * @return brand.
      */
     public String getBrand() {
         return brand;
     }
 
     /**
-     * Set the type of the drink.
-     *
-     * @param type;
+     * Type setter.
+     * @param type the drink's type.
      */
     public void setType(String type) {
         this.type = type;
     }
 
     /**
-     * Get the type of the drink.
-     *
-     * @return type
+     * Type getter.
+     * @return the drink's type.
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Set the price of the drink.
-     *
-     * @param price;
+     * Price setter.
+     * @param price the drink's price.
      */
     public void setPrice(double price) {
-        this.price = price;
+//        this.price = price;
+        if (price > 0) {
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException("Error setting price");
+        }
     }
 
     /**
-     * Get the price of the drink, formatted using DecimalFormatter.
-     *
-     * @return price
+     * Price getter.
+     * @return formatted price.
      */
     public String getPrice() {
         return dollar.format(price);
     }
 
     /**
-     * Returns an unformatted double of the price.
-     * @return price
+     * Returns unformatted price.
+     * @return unformatted price.
      */
     public double getPriceSimple() {
         return price;
     }
 
     /**
-     * Set the volume of the bottle.
-     * @param volume;
+     * Volume setter.
+     * @param volume the drink's volume.
      */
-    public void setVolume(int volume) {
-        this.volume = volume;
+    public void setVolume(final int volume) {
+        if (volume > 0) {
+            this.volume = volume;
+        } else {
+            throw new IllegalArgumentException("Error setting volume");
+        }
     }
 
     /**
-     * Get the volume of the bottle.
-     *
-     * @return volume
+     * Volume getter.
+     * @return volume.
      */
     public int getVolume() {
         return volume;
     }
 
     /**
-     * Returns a drink as a string.
-     * @return a detailed string of items in the inventory
+     * toString for drinks.
+     * @return string formatted drink.
      */
     public String toString() {
-        return "Type: " + this.type + ", Price: "
-                + dollar.format(this.price) + ", Brand: "
-                + this.brand + ", Volume (oz): " + this.volume;
+        return "Brand: " + this.getBrand() + ", Type: " + this.type
+                + ", Price: " + dollar.format(this.price)
+                + ", Volume (oz): " + this.volume;
     }
 
     /**
-     * Used to print our list of drinks.
-     * @param list;
+     * Filters types for drinks.
+     * @param list the list of drinks.
+     * @param s the type.
+     * @return list of filtered drinks.
      */
-    public static void printInventory(ArrayList<Drinks> list) {
-        for (Drinks drinks : list) {
-            System.out.println(drinks);
-        }
-    }
-
-    /**
-     * Given a type (as a String), find items in the list that match.
-     *
-     * @param list;
-     * @param s;
-     */
-    public static void findType(ArrayList<Drinks> list, String s) {
+    public static ArrayList<Drinks> findType(final ArrayList<Drinks> list,
+                                             final String s) {
+        ArrayList<Drinks> tempList = new ArrayList<>();
         for (Drinks drinks : list) {
             if (drinks.getType().equalsIgnoreCase(s)) {
-                System.out.println(drinks);
+                tempList.add(drinks);
             }
         }
+        return tempList;
     }
 
     /**
-     * Given a brand, find items that match that brand.
-     *
-     * @param list;
-     * @param s;
+     * Filter brands of drink.
+     * @param list the list of drinks.
+     * @param s the brand.
+     * @return list of filtered drinks.
      */
-    public static void findBrand(ArrayList<Drinks> list, String s) {
+    public static ArrayList<Drinks> findBrand(final ArrayList<Drinks> list,
+                                              final String s) {
+        ArrayList<Drinks> tempList = new ArrayList<>();
         for (Drinks drinks : list) {
             if (drinks.getBrand().equalsIgnoreCase(s)) {
-                System.out.println(drinks);
+                tempList.add(drinks);
             }
         }
+        return tempList;
     }
 
     /**
-     * Using getPriceSimple, adds up the price of everything in the
-     * inventory.
-     *
-     * @param list;
-     * @return dollar;
+     * Adds up the price of the inventory.
+     * @param list the list of drinks
+     * @return price of inventory.
      */
-    public static String totalPrice(ArrayList<Drinks> list) {
+    public static String totalPrice(final ArrayList<Drinks> list) {
         double price = 0.0;
         for (Drinks drinks : list) {
             price = price + drinks.getPriceSimple();
         }
         return dollar.format(price);
-    }
-
-    /**
-     * Given a brand and type, remove drinks that match those parameters
-     * from the list.
-     *
-     * @param brand;
-     * @param type;
-     * @param list;
-     */
-    public static void removeDrink(String brand, String type,
-                                   ArrayList<Drinks> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getBrand().equalsIgnoreCase(brand)
-            && list.get(i).getType().equalsIgnoreCase(type)) {
-                list.remove(i);
-            }
-        }
-    }
-
-    /**
-     * Remove drinks from the list that are empty.
-     *
-     * @param list;
-     */
-    public static void removeEmpty(ArrayList<Drinks> list) {
-        int i;
-        for (i = 0; i < list.size(); i++) {
-            if (list.get(i).getVolume() == 0) {
-                list.remove(i);
-            }
-        }
     }
 }

@@ -1,115 +1,375 @@
-
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
+import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import java.util.Arrays;
 
 public class Gui {
-    public static  void main (String[] args) {
 
-        Border border = new LineBorder(Color.BLACK, 4, true);
+    /**
+     * Used for setting dimensions of our GUI.
+     */
+    private GridBagConstraints gbc = new GridBagConstraints();
 
-        //creates the frame to the GUI
+    /**
+     * Add button.
+     */
+    private JButton addButton = new JButton("Add");
+
+    /**
+     * Remove button.
+     */
+    private JButton remButton = new JButton("Remove");
+
+    /**
+     * Button used for filtering by brand.
+     */
+    private JButton filterBrand = new JButton("Filter Brand");
+
+    /**
+     * Button used for filtering by type.
+     */
+    private JButton filterType = new JButton("Filter Type");
+
+    /**
+     * Button used to refresh the table.
+     */
+    private JButton refreshButton = new JButton("Refresh");
+
+    /**
+     * Making our GUI.
+     */
+    public Gui() {
         JFrame gui = new JFrame("Bar Inventory");
-        gui.setLayout(new GridLayout(1,2));
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel = new JPanel();
+        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        panel.setLayout(new GridBagLayout());
 
-        //This is the creation of the first panel along with giving it a colored background.
-        BarInventoryPanel liquorPanel = new BarInventoryPanel();
-        gui.getContentPane().add(liquorPanel);
-        liquorPanel.setLayout(new FlowLayout(FlowLayout.CENTER,100,0));
-        liquorPanel.setBackground(Color.GREEN);
-        liquorPanel.setBorder(border);
+        JLabel title = new JLabel("Bar Inventory Manager");
+        title.setFont(new Font("Helvetica", Font.BOLD, 24));
+        title.setVerticalAlignment(JLabel.TOP);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(title, gbc);
 
-        //Sets the title for the liquor panel
-        JLabel label = new JLabel("Liquor", SwingConstants.CENTER);
-        label.setFont(new java.awt.Font("Arial", Font.ITALIC, 25));
-        liquorPanel.add(label);
+        // Fonts for buttons
+        addButton.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        remButton.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        filterBrand.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        filterType.setFont(new Font("Helvetica", Font.PLAIN, 12));
+        refreshButton.setFont(new Font("Helvetica", Font.PLAIN, 12));
 
-//        String[] optionsToChoose = {"Whiskey", "Brandy", "Vodka", "Rum", "None of the listed"};
-//        JComboBox<String> jComboBox = new JComboBox<>(optionsToChoose);
-//        panel.add(jComboBox);
+        // for add button
+        JLabel brandLabel = new JLabel("Brand");
+        JLabel typeLabel = new JLabel("Type");
+        JLabel priceLabel = new JLabel("Price");
+        JLabel volLabel = new JLabel("Volume");
+        JTextField brandField = new JTextField(10);
+        JTextField typeField = new JTextField(10);
+        JTextField priceField = new JTextField(10);
+        JTextField volField = new JTextField(10);
+        JPanel addPanel = new JPanel();
+        addPanel.add(brandLabel);
+        addPanel.add(brandField);
+        addPanel.add(typeLabel);
+        addPanel.add(typeField);
+        addPanel.add(priceLabel);
+        addPanel.add(priceField);
+        addPanel.add(volLabel);
+        addPanel.add(volField);
 
-        //makes two textfedields, one for the liquor information and the other
-        //for whatever inputs you want to put in.
-        JTextField textLiquor = new JTextField();
-        JTextField textLiquor1 = new JTextField();
+        String[] colNames = {"Brand", "Type", "Price", "Vol"};
 
-        textLiquor.setPreferredSize(new Dimension(300,350));
-        textLiquor1.setPreferredSize(new Dimension(100,30));
+        Drinks smirnoff = new Drinks("Vodka", "Smirnoff", 12.00, 40);
+        Drinks ciroc = new Drinks("Vodka", "Ciroc", 12.00, 40);
+        Drinks bombaySapphire = new Drinks("Gin", "Bombay", 14.00, 24);
+        Drinks patron = new Drinks("Tequila", "Patron", 15.00, 16);
+        Drinks jack = new Drinks("Whiskey", "Jack Daniels", 15.00, 40);
 
-        textLiquor.setBorder(border);
-        textLiquor1.setBorder(border);
+        ArrayList<Drinks> drinksList = new ArrayList<>();
+        drinksList.add(smirnoff);
+        drinksList.add(ciroc);
+        drinksList.add(bombaySapphire);
+        drinksList.add(patron);
+        drinksList.add(jack);
 
-        textLiquor.setEditable(false);
+        DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
 
-        liquorPanel.add(textLiquor);
-        liquorPanel.add(textLiquor1);
+        for (Drinks drinks : drinksList) {
+            tableModel.addRow(new String[]{drinks.getBrand(),
+                    drinks.getType(), drinks.getPrice(),
+                    String.valueOf(drinks.getVolume())});
+        }
+        JTable table = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(table);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(scrollPane, gbc);
 
-        liquorPanel.add(new JButton("add"));
+        // Array of valid drink types
+        String[] drinkTypes = {"vodka", "gin", "whiskey", "wine",
+                "beer", "champagne", "tequila"};
 
-        //Everything on the second panel
-        BeerPanelClass beerPanel = new BeerPanelClass();
-        gui.getContentPane().add(beerPanel);
-        beerPanel.setLayout(new FlowLayout(FlowLayout.CENTER,100,0));
-        beerPanel.setBorder(border);
+        tableModel.addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(final TableModelEvent e) {
 
-        JLabel label1 = new JLabel("Beer", SwingConstants.CENTER);
-        label1.setFont(new java.awt.Font("Arial", Font.ITALIC, 25));
-        beerPanel.setBackground(Color.YELLOW);
-        beerPanel.add(label1);
+                if (e.getType() == TableModelEvent.UPDATE) {
 
-        JTextField textBeer = new JTextField();
-        JTextField textBeer1 = new JTextField();
+                    int row = e.getFirstRow();
+                    int col = e.getColumn();
 
-        textBeer.setPreferredSize(new Dimension(300,350));
-        textBeer1.setPreferredSize(new Dimension(100,30));
+                    Drinks d = drinksList.get(row);
+                    Object o = tableModel.getValueAt(row, col);
 
-        textBeer.setBorder(border);
-        textBeer1.setBorder(border);
+                    try {
+                        String substringText = o.toString().toLowerCase()
+                                .substring(0, 1).toUpperCase()
+                                + o.toString().substring(1);
+                        if (col == 0) {
+                            d.setBrand(substringText);
+                        } else if (col == 1) {
+                            if (Arrays.asList(drinkTypes).contains(o.toString()
+                                    .toLowerCase())) {
+                                d.setType(substringText);
+                            } else {
+                                throw new IllegalArgumentException();
+                            }
+                        } else if (col == 2) {
+                            d.setPrice(Double.parseDouble(o.toString()));
+                        } else if (col == 3) {
+                            d.setVolume(Integer.parseInt(o.toString()));
+                        } else {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error");
+                    }
+                }
+            }
+        });
 
-        textBeer.setEditable(false);
+        // Add button logic
+        addButton.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+                // for adding a new drink
+                Drinks tempDrink = new Drinks(null, null, 0, 0);
+                boolean test = true;
+                JOptionPane.showMessageDialog(null, addPanel,
+                        "Enter Values", JOptionPane.PLAIN_MESSAGE);
+                while (test) {
+                    try {
+                        tempDrink.setBrand(brandField.getText().toLowerCase()
+                                .substring(0, 1).toUpperCase()
+                                + brandField.getText()
+                                .toLowerCase().substring(1));
+                        if (brandField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null,
+                                "Brand field is blank");
+                        break;
+                    }
+                    try {
+                        tempDrink.setType(typeField.getText().toLowerCase()
+                                .substring(0, 1).toUpperCase()
+                                + typeField.getText()
+                                .toLowerCase().substring(1));
+                        if (typeField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        } else if (!Arrays.asList(drinkTypes)
+                                .contains(tempDrink.getType().toLowerCase())) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null,
+                                "Invalid drink type");
+                        break;
+                    }
+                    try {
+                        tempDrink.setPrice(Double
+                                .parseDouble(priceField.getText()));
+                        if (priceField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                        if (Double.parseDouble(priceField.getText()) < 0.0) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null,
+                                "Error in price field");
+                        break;
+                    }
+                    try {
+                        tempDrink.setVolume(Integer
+                                .parseInt(volField.getText()));
+                        if (volField.getText().equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                        if (Integer.parseInt(volField.getText()) < 0) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null,
+                                "Error in volume field");
+                        break;
+                    }
+                    drinksList.add(tempDrink);
+                    tableModel.setRowCount(0);
+                    for (Drinks drinks : drinksList) {
+                        tableModel.addRow(new String[]{drinks.getBrand(),
+                                drinks.getType(), drinks.getPrice(),
+                                String.valueOf(drinks.getVolume())});
+                    }
+                    test = false;
+                }
+            }
+        });
+        gbc.ipadx = 10;
+        gbc.ipady = 2;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridheight = 5;
+        panel.add(addButton, gbc);
 
-        beerPanel.add(textBeer);
-        beerPanel.add(textBeer1);
+        //Select a row
+        table.setRowSelectionAllowed(true);
 
-        beerPanel.add(new JButton("add"));
+        // Remove button logic
+        remButton.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
 
-        //Everything on the thrid panel
-        OtherPanelClass otherPanel = new OtherPanelClass();
-        gui.getContentPane().add(otherPanel);
-        otherPanel.setLayout(new FlowLayout(FlowLayout.CENTER,100,0));
-        otherPanel.setBorder(border);
+                try {
+                    int drinkIndex = table.getSelectedRow();
+                    if (drinkIndex != -1) {
+                        tableModel.removeRow(drinkIndex);
+                        drinksList.remove(drinkIndex);
+                        JOptionPane.showMessageDialog(null, "Deleted Row!");
+//                        System.out.println(drinksList);
+                    } else {
+                        throw new IllegalArgumentException();
+                    }
+                } catch (Exception exception) {
+                    JOptionPane.showMessageDialog(null,
+                            "You must select a row first!");
+                }
+            }
+        });
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        panel.add(remButton, gbc);
 
-        JLabel label2 = new JLabel("Other", SwingConstants.CENTER);
-        label2.setFont(new java.awt.Font("Arial", Font.ITALIC, 25));
-        otherPanel.setBackground(Color.ORANGE);
-        otherPanel.add(label2);
+        // Filter button logic
+        filterType.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+                String filter;
+                boolean test = true;
+                while (test) {
+                    try {
+                        filter = JOptionPane.showInputDialog("Enter Type");
+                        if (filter.equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error");
+                        break;
+                    }
+                    tableModel.setRowCount(0);
+                    ArrayList<Drinks> tempList =
+                            Drinks.findType(drinksList, filter);
+                    for (Drinks drinks : tempList) {
+                        tableModel.addRow(new String[]{drinks.getBrand(),
+                                drinks.getType(), drinks.getPrice(),
+                                String.valueOf(drinks.getVolume())});
+                    }
+                    test = false;
+                }
+            }
+        });
 
-        JTextField textOther = new JTextField();
-        JTextField textOther1 = new JTextField();
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        panel.add(filterType, gbc);
 
-        textOther.setPreferredSize(new Dimension(300,350));
-        textOther1.setPreferredSize(new Dimension(100,30));
+        // filter brand logic
+        filterBrand.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+                String filter;
+                boolean test = true;
+                while (test) {
+                    try {
+                        filter = JOptionPane.showInputDialog("Enter Brand");
+                        if (filter.equals("")) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null,
+                                "Text field is blank");
+                        break;
+                    }
+                    tableModel.setRowCount(0);
+                    ArrayList<Drinks> tempList =
+                            Drinks.findBrand(drinksList, filter);
+                    for (Drinks drinks : tempList) {
+                        tableModel.addRow(new String[]{drinks.getBrand(),
+                                drinks.getType(), drinks.getPrice(),
+                                String.valueOf(drinks.getVolume())});
+                    }
+                    test = false;
+                }
+            }
+        });
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        panel.add(filterBrand, gbc);
 
-        textOther.setBorder(border);
-        textOther1.setBorder(border);
+        // Refresh button logic
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                tableModel.setRowCount(0);
+                for (Drinks drinks : drinksList) {
+                    tableModel.addRow(new String[]{drinks.getBrand(),
+                            drinks.getType(), drinks.getPrice(),
+                            String.valueOf(drinks.getVolume())});
+                }
+            }
+        });
+        gbc.gridx = 5;
+        gbc.gridy = 0;
+        panel.add(refreshButton, gbc);
 
-        textOther.setEditable(false);
+        //Sort by column
+        table.setAutoCreateRowSorter(true);
 
-        otherPanel.add(textOther);
-        otherPanel.add(textOther1);
-
-        otherPanel.add(new JButton("add"));
-
-        gui.setSize(1250, 500);
-        gui.setPreferredSize(new Dimension(1000, 500));
+        gui.setSize(1000, 550);
+        gui.add(panel);
+        //gui.pack();
         gui.setVisible(true);
-
     }
 
+    /**
+     * Running the GUI.
+     *
+     * @param args
+     */
+    public static void main(final String[] args) {
+        new Gui();
+    }
 }
