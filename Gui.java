@@ -111,16 +111,28 @@ public class Gui {
                     Drinks d = drinksList.get(row);
                     Object o = tableModel.getValueAt(row, col);
 
-                    if (col == 0) {
-                        d.setBrand(o.toString());
-                    } else if (col == 1) {
-                        d.setType(o.toString());
-                    } else if (col == 2) {
-                        d.setPrice(Double.parseDouble(o.toString()));
-                    } else if (col == 3) {
-                        d.setVolume(Integer.parseInt(o.toString()));
-                    } else {
-                        throw new IllegalArgumentException();
+                    try {
+                        String substringText = o.toString().toLowerCase()
+                                .substring(0, 1).toUpperCase()
+                                + o.toString().substring(1);
+                        if (col == 0) {
+                            d.setBrand(substringText);
+                        } else if (col == 1) {
+                            if (Arrays.asList(drinkTypes).contains(o)) {
+                                d.setType(substringText);
+                            }
+                            else {
+                                throw new IllegalArgumentException();
+                            }
+                        } else if (col == 2) {
+                            d.setPrice(Double.parseDouble(o.toString()));
+                        } else if (col == 3) {
+                            d.setVolume(Integer.parseInt(o.toString()));
+                        } else {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Error");
                     }
                 }
             }
