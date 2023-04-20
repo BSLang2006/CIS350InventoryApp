@@ -47,7 +47,7 @@ public class Drinks {
      * Brand setter.
      * @param brand the drink's brand.
      */
-    public void setBrand(String brand) {
+    public void setBrand(final String brand) {
         this.brand = brand;
     }
 
@@ -63,7 +63,7 @@ public class Drinks {
      * Type setter.
      * @param type the drink's type.
      */
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
@@ -79,7 +79,7 @@ public class Drinks {
      * Price setter.
      * @param price the drink's price.
      */
-    public void setPrice(double price) {
+    public void setPrice(final double price) {
 //        this.price = price;
         if (price > 0) {
             this.price = price;
