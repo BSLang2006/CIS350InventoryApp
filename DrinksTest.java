@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 public class DrinksTest {
 
     /**
-     *
+     * Tests getting the brand.
      */
     @Test
     public void testGetBrand() {
@@ -14,7 +14,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests setting the brand.
      */
     @Test
     public void testSetBrand() {
@@ -24,7 +24,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests getting the type.
      */
     @Test
     public void testGetType() {
@@ -33,7 +33,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests setting the type.
      */
     @Test
     public void testSetType() {
@@ -43,7 +43,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests getting the price.
      */
     @Test
     public void testGetPrice() {
@@ -52,7 +52,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests setting the price.
      */
     @Test
     public void testSetPrice() {
@@ -62,7 +62,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests getting the volume.
      */
     @Test
     public void testGetVol() {
@@ -71,7 +71,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests setting the volume.
      */
     @Test
     public void testSetVol() {
@@ -81,7 +81,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests making sure setting a negative volume throws an error.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testSetVolumeNegative() {
@@ -90,7 +90,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests making sure setting a negative price throws an error.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testSetPriceNegative() {
@@ -100,7 +100,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests filtering by type.
      */
     @Test
     public void testFindType() {
@@ -122,7 +122,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests filtering by brand.
      */
     @Test
     public void testFindBrand() {
@@ -142,7 +142,7 @@ public class DrinksTest {
     }
 
     /**
-     *
+     * Tests adding up the total price.
      */
     @Test
     public void testTotalPrice() {

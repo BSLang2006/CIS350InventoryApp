@@ -20,13 +20,39 @@ import java.util.Arrays;
 
 public class Gui {
 
-    GridBagConstraints gbc = new GridBagConstraints();
-    JButton addButton = new JButton("Add");
-    JButton remButton = new JButton("Remove");
-    JButton filterBrand = new JButton("Filter Brand");
-    JButton filterType = new JButton("Filter Type");
-    JButton refreshButton = new JButton("Refresh");
+    /**
+     * Used for setting dimensions of our GUI.
+     */
+    private GridBagConstraints gbc = new GridBagConstraints();
 
+    /**
+     * Add button.
+     */
+    private JButton addButton = new JButton("Add");
+
+    /**
+     * Remove button.
+     */
+    private JButton remButton = new JButton("Remove");
+
+    /**
+     * Button used for filtering by brand.
+     */
+    private JButton filterBrand = new JButton("Filter Brand");
+
+    /**
+     * Button used for filtering by type.
+     */
+    private JButton filterType = new JButton("Filter Type");
+
+    /**
+     * Button used to refresh the table.
+     */
+    private JButton refreshButton = new JButton("Refresh");
+
+    /**
+     * Making our GUI.
+     */
     public Gui() {
         JFrame gui = new JFrame("Bar Inventory");
         JPanel panel = new JPanel();
@@ -101,7 +127,7 @@ public class Gui {
 
         tableModel.addTableModelListener(new TableModelListener() {
             @Override
-            public void tableChanged(TableModelEvent e) {
+            public void tableChanged(final TableModelEvent e) {
 
                 if (e.getType() == TableModelEvent.UPDATE) {
 
@@ -118,10 +144,10 @@ public class Gui {
                         if (col == 0) {
                             d.setBrand(substringText);
                         } else if (col == 1) {
-                            if (Arrays.asList(drinkTypes).contains(o)) {
+                            if (Arrays.asList(drinkTypes).contains(o.toString()
+                                    .toLowerCase())) {
                                 d.setType(substringText);
-                            }
-                            else {
+                            } else {
                                 throw new IllegalArgumentException();
                             }
                         } else if (col == 2) {
@@ -140,7 +166,7 @@ public class Gui {
 
         // Add button logic
         addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 // for adding a new drink
                 Drinks tempDrink = new Drinks(null, null, 0, 0);
                 boolean test = true;
@@ -227,7 +253,7 @@ public class Gui {
 
         // Remove button logic
         remButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
 
                 try {
                     int drinkIndex = table.getSelectedRow();
@@ -251,7 +277,7 @@ public class Gui {
 
         // Filter button logic
         filterType.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 String filter;
                 boolean test = true;
                 while (test) {
@@ -283,7 +309,7 @@ public class Gui {
 
         // filter brand logic
         filterBrand.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 String filter;
                 boolean test = true;
                 while (test) {
@@ -316,7 +342,7 @@ public class Gui {
         // Refresh button logic
         refreshButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 tableModel.setRowCount(0);
                 for (Drinks drinks : drinksList) {
                     tableModel.addRow(new String[]{drinks.getBrand(),
@@ -338,7 +364,12 @@ public class Gui {
         gui.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    /**
+     * Running the GUI.
+     *
+     * @param args
+     */
+    public static void main(final String[] args) {
         new Gui();
     }
 }
